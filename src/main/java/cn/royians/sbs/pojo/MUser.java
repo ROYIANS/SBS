@@ -5,7 +5,7 @@ import java.util.Date;
 public class MUser {
     private Integer uId;
 
-    private Integer uOpenid;
+    private String uOpenid;
 
     private Integer uGid;
 
@@ -21,7 +21,7 @@ public class MUser {
 
     private String uLanguage;
 
-    private Date uRegesterTime;
+    private Date uRegisterTime;
 
     public Integer getuId() {
         return uId;
@@ -31,12 +31,12 @@ public class MUser {
         this.uId = uId;
     }
 
-    public Integer getuOpenid() {
+    public String getuOpenid() {
         return uOpenid;
     }
 
-    public void setuOpenid(Integer uOpenid) {
-        this.uOpenid = uOpenid;
+    public void setuOpenid(String uOpenid) {
+        this.uOpenid = uOpenid == null ? null : uOpenid.trim();
     }
 
     public Integer getuGid() {
@@ -95,11 +95,11 @@ public class MUser {
         this.uLanguage = uLanguage == null ? null : uLanguage.trim();
     }
 
-    public Date getuRegesterTime() {
-        return uRegesterTime;
+    public Date getuRegisterTime() {
+        return uRegisterTime;
     }
 
-    public void setuRegesterTime(Date uRegesterTime) {
-        this.uRegesterTime = uRegesterTime;
+    public void setuRegisterTime(Date uRegisterTime) {
+        this.uRegisterTime = uRegisterTime;
     }
 }

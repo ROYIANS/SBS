@@ -1,15 +1,14 @@
-create table M_GROUP
+create table sbs.m_group
 (
-  G_ID int not null,
-  G_NAME VARCHAR(40) not null,
-  G_AVATARURL VARCHAR(200) not null,
-  G_REGESTER_TIME DATETIME not null
+  G_ID int auto_increment,
+  G_NAME varchar(40) not null,
+  G_AVATARURL varchar(200) not null,
+  G_REGISTER_TIME datetime not null,
+  G_INVITE_CODE varchar(40) not null,
+  constraint M_GROUP_G_ID_uindex
+    unique (G_ID)
 );
 
-create unique index M_GROUP_G_ID_uindex
-  on M_GROUP (G_ID);
-
-alter table M_GROUP
-  add constraint M_GROUP_pk
-    primary key (G_ID);
+alter table sbs.m_group
+  add primary key (G_ID);
 

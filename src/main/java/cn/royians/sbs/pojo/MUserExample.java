@@ -175,52 +175,62 @@ public class MUserExample {
             return (Criteria) this;
         }
 
-        public Criteria andUOpenidEqualTo(Integer value) {
+        public Criteria andUOpenidEqualTo(String value) {
             addCriterion("U_OPENID =", value, "uOpenid");
             return (Criteria) this;
         }
 
-        public Criteria andUOpenidNotEqualTo(Integer value) {
+        public Criteria andUOpenidNotEqualTo(String value) {
             addCriterion("U_OPENID <>", value, "uOpenid");
             return (Criteria) this;
         }
 
-        public Criteria andUOpenidGreaterThan(Integer value) {
+        public Criteria andUOpenidGreaterThan(String value) {
             addCriterion("U_OPENID >", value, "uOpenid");
             return (Criteria) this;
         }
 
-        public Criteria andUOpenidGreaterThanOrEqualTo(Integer value) {
+        public Criteria andUOpenidGreaterThanOrEqualTo(String value) {
             addCriterion("U_OPENID >=", value, "uOpenid");
             return (Criteria) this;
         }
 
-        public Criteria andUOpenidLessThan(Integer value) {
+        public Criteria andUOpenidLessThan(String value) {
             addCriterion("U_OPENID <", value, "uOpenid");
             return (Criteria) this;
         }
 
-        public Criteria andUOpenidLessThanOrEqualTo(Integer value) {
+        public Criteria andUOpenidLessThanOrEqualTo(String value) {
             addCriterion("U_OPENID <=", value, "uOpenid");
             return (Criteria) this;
         }
 
-        public Criteria andUOpenidIn(List<Integer> values) {
+        public Criteria andUOpenidLike(String value) {
+            addCriterion("U_OPENID like", value, "uOpenid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUOpenidNotLike(String value) {
+            addCriterion("U_OPENID not like", value, "uOpenid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUOpenidIn(List<String> values) {
             addCriterion("U_OPENID in", values, "uOpenid");
             return (Criteria) this;
         }
 
-        public Criteria andUOpenidNotIn(List<Integer> values) {
+        public Criteria andUOpenidNotIn(List<String> values) {
             addCriterion("U_OPENID not in", values, "uOpenid");
             return (Criteria) this;
         }
 
-        public Criteria andUOpenidBetween(Integer value1, Integer value2) {
+        public Criteria andUOpenidBetween(String value1, String value2) {
             addCriterion("U_OPENID between", value1, value2, "uOpenid");
             return (Criteria) this;
         }
 
-        public Criteria andUOpenidNotBetween(Integer value1, Integer value2) {
+        public Criteria andUOpenidNotBetween(String value1, String value2) {
             addCriterion("U_OPENID not between", value1, value2, "uOpenid");
             return (Criteria) this;
         }
@@ -705,63 +715,63 @@ public class MUserExample {
             return (Criteria) this;
         }
 
-        public Criteria andURegesterTimeIsNull() {
-            addCriterion("U_REGESTER_TIME is null");
+        public Criteria andURegisterTimeIsNull() {
+            addCriterion("U_REGISTER_TIME is null");
             return (Criteria) this;
         }
 
-        public Criteria andURegesterTimeIsNotNull() {
-            addCriterion("U_REGESTER_TIME is not null");
+        public Criteria andURegisterTimeIsNotNull() {
+            addCriterion("U_REGISTER_TIME is not null");
             return (Criteria) this;
         }
 
-        public Criteria andURegesterTimeEqualTo(Date value) {
-            addCriterion("U_REGESTER_TIME =", value, "uRegesterTime");
+        public Criteria andURegisterTimeEqualTo(Date value) {
+            addCriterion("U_REGISTER_TIME =", value, "uRegisterTime");
             return (Criteria) this;
         }
 
-        public Criteria andURegesterTimeNotEqualTo(Date value) {
-            addCriterion("U_REGESTER_TIME <>", value, "uRegesterTime");
+        public Criteria andURegisterTimeNotEqualTo(Date value) {
+            addCriterion("U_REGISTER_TIME <>", value, "uRegisterTime");
             return (Criteria) this;
         }
 
-        public Criteria andURegesterTimeGreaterThan(Date value) {
-            addCriterion("U_REGESTER_TIME >", value, "uRegesterTime");
+        public Criteria andURegisterTimeGreaterThan(Date value) {
+            addCriterion("U_REGISTER_TIME >", value, "uRegisterTime");
             return (Criteria) this;
         }
 
-        public Criteria andURegesterTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("U_REGESTER_TIME >=", value, "uRegesterTime");
+        public Criteria andURegisterTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("U_REGISTER_TIME >=", value, "uRegisterTime");
             return (Criteria) this;
         }
 
-        public Criteria andURegesterTimeLessThan(Date value) {
-            addCriterion("U_REGESTER_TIME <", value, "uRegesterTime");
+        public Criteria andURegisterTimeLessThan(Date value) {
+            addCriterion("U_REGISTER_TIME <", value, "uRegisterTime");
             return (Criteria) this;
         }
 
-        public Criteria andURegesterTimeLessThanOrEqualTo(Date value) {
-            addCriterion("U_REGESTER_TIME <=", value, "uRegesterTime");
+        public Criteria andURegisterTimeLessThanOrEqualTo(Date value) {
+            addCriterion("U_REGISTER_TIME <=", value, "uRegisterTime");
             return (Criteria) this;
         }
 
-        public Criteria andURegesterTimeIn(List<Date> values) {
-            addCriterion("U_REGESTER_TIME in", values, "uRegesterTime");
+        public Criteria andURegisterTimeIn(List<Date> values) {
+            addCriterion("U_REGISTER_TIME in", values, "uRegisterTime");
             return (Criteria) this;
         }
 
-        public Criteria andURegesterTimeNotIn(List<Date> values) {
-            addCriterion("U_REGESTER_TIME not in", values, "uRegesterTime");
+        public Criteria andURegisterTimeNotIn(List<Date> values) {
+            addCriterion("U_REGISTER_TIME not in", values, "uRegisterTime");
             return (Criteria) this;
         }
 
-        public Criteria andURegesterTimeBetween(Date value1, Date value2) {
-            addCriterion("U_REGESTER_TIME between", value1, value2, "uRegesterTime");
+        public Criteria andURegisterTimeBetween(Date value1, Date value2) {
+            addCriterion("U_REGISTER_TIME between", value1, value2, "uRegisterTime");
             return (Criteria) this;
         }
 
-        public Criteria andURegesterTimeNotBetween(Date value1, Date value2) {
-            addCriterion("U_REGESTER_TIME not between", value1, value2, "uRegesterTime");
+        public Criteria andURegisterTimeNotBetween(Date value1, Date value2) {
+            addCriterion("U_REGISTER_TIME not between", value1, value2, "uRegisterTime");
             return (Criteria) this;
         }
     }

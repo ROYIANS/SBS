@@ -305,63 +305,133 @@ public class MGroupExample {
             return (Criteria) this;
         }
 
-        public Criteria andGRegesterTimeIsNull() {
-            addCriterion("G_REGESTER_TIME is null");
+        public Criteria andGRegisterTimeIsNull() {
+            addCriterion("G_REGISTER_TIME is null");
             return (Criteria) this;
         }
 
-        public Criteria andGRegesterTimeIsNotNull() {
-            addCriterion("G_REGESTER_TIME is not null");
+        public Criteria andGRegisterTimeIsNotNull() {
+            addCriterion("G_REGISTER_TIME is not null");
             return (Criteria) this;
         }
 
-        public Criteria andGRegesterTimeEqualTo(Date value) {
-            addCriterion("G_REGESTER_TIME =", value, "gRegesterTime");
+        public Criteria andGRegisterTimeEqualTo(Date value) {
+            addCriterion("G_REGISTER_TIME =", value, "gRegisterTime");
             return (Criteria) this;
         }
 
-        public Criteria andGRegesterTimeNotEqualTo(Date value) {
-            addCriterion("G_REGESTER_TIME <>", value, "gRegesterTime");
+        public Criteria andGRegisterTimeNotEqualTo(Date value) {
+            addCriterion("G_REGISTER_TIME <>", value, "gRegisterTime");
             return (Criteria) this;
         }
 
-        public Criteria andGRegesterTimeGreaterThan(Date value) {
-            addCriterion("G_REGESTER_TIME >", value, "gRegesterTime");
+        public Criteria andGRegisterTimeGreaterThan(Date value) {
+            addCriterion("G_REGISTER_TIME >", value, "gRegisterTime");
             return (Criteria) this;
         }
 
-        public Criteria andGRegesterTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("G_REGESTER_TIME >=", value, "gRegesterTime");
+        public Criteria andGRegisterTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("G_REGISTER_TIME >=", value, "gRegisterTime");
             return (Criteria) this;
         }
 
-        public Criteria andGRegesterTimeLessThan(Date value) {
-            addCriterion("G_REGESTER_TIME <", value, "gRegesterTime");
+        public Criteria andGRegisterTimeLessThan(Date value) {
+            addCriterion("G_REGISTER_TIME <", value, "gRegisterTime");
             return (Criteria) this;
         }
 
-        public Criteria andGRegesterTimeLessThanOrEqualTo(Date value) {
-            addCriterion("G_REGESTER_TIME <=", value, "gRegesterTime");
+        public Criteria andGRegisterTimeLessThanOrEqualTo(Date value) {
+            addCriterion("G_REGISTER_TIME <=", value, "gRegisterTime");
             return (Criteria) this;
         }
 
-        public Criteria andGRegesterTimeIn(List<Date> values) {
-            addCriterion("G_REGESTER_TIME in", values, "gRegesterTime");
+        public Criteria andGRegisterTimeIn(List<Date> values) {
+            addCriterion("G_REGISTER_TIME in", values, "gRegisterTime");
             return (Criteria) this;
         }
 
-        public Criteria andGRegesterTimeNotIn(List<Date> values) {
-            addCriterion("G_REGESTER_TIME not in", values, "gRegesterTime");
+        public Criteria andGRegisterTimeNotIn(List<Date> values) {
+            addCriterion("G_REGISTER_TIME not in", values, "gRegisterTime");
             return (Criteria) this;
         }
 
-        public Criteria andGRegesterTimeBetween(Date value1, Date value2) {
-            addCriterion("G_REGESTER_TIME between", value1, value2, "gRegesterTime");
+        public Criteria andGRegisterTimeBetween(Date value1, Date value2) {
+            addCriterion("G_REGISTER_TIME between", value1, value2, "gRegisterTime");
             return (Criteria) this;
         }
 
-        public Criteria andGRegesterTimeNotBetween(Date value1, Date value2) {
-            addCriterion("G_REGESTER_TIME not between", value1, value2, "gRegesterTime");
+        public Criteria andGRegisterTimeNotBetween(Date value1, Date value2) {
+            addCriterion("G_REGISTER_TIME not between", value1, value2, "gRegisterTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGInviteCodeIsNull() {
+            addCriterion("G_INVITE_CODE is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGInviteCodeIsNotNull() {
+            addCriterion("G_INVITE_CODE is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGInviteCodeEqualTo(String value) {
+            addCriterion("G_INVITE_CODE =", value, "gInviteCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andGInviteCodeNotEqualTo(String value) {
+            addCriterion("G_INVITE_CODE <>", value, "gInviteCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andGInviteCodeGreaterThan(String value) {
+            addCriterion("G_INVITE_CODE >", value, "gInviteCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andGInviteCodeGreaterThanOrEqualTo(String value) {
+            addCriterion("G_INVITE_CODE >=", value, "gInviteCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andGInviteCodeLessThan(String value) {
+            addCriterion("G_INVITE_CODE <", value, "gInviteCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andGInviteCodeLessThanOrEqualTo(String value) {
+            addCriterion("G_INVITE_CODE <=", value, "gInviteCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andGInviteCodeLike(String value) {
+            addCriterion("G_INVITE_CODE like", value, "gInviteCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andGInviteCodeNotLike(String value) {
+            addCriterion("G_INVITE_CODE not like", value, "gInviteCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andGInviteCodeIn(List<String> values) {
+            addCriterion("G_INVITE_CODE in", values, "gInviteCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andGInviteCodeNotIn(List<String> values) {
+            addCriterion("G_INVITE_CODE not in", values, "gInviteCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andGInviteCodeBetween(String value1, String value2) {
+            addCriterion("G_INVITE_CODE between", value1, value2, "gInviteCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andGInviteCodeNotBetween(String value1, String value2) {
+            addCriterion("G_INVITE_CODE not between", value1, value2, "gInviteCode");
             return (Criteria) this;
         }
     }

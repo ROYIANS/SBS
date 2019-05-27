@@ -5,7 +5,8 @@
     <id column="G_ID" property="gId" jdbcType="INTEGER" />
     <result column="G_NAME" property="gName" jdbcType="VARCHAR" />
     <result column="G_AVATARURL" property="gAvatarurl" jdbcType="VARCHAR" />
-    <result column="G_REGESTER_TIME" property="gRegesterTime" jdbcType="TIMESTAMP" />
+    <result column="G_REGISTER_TIME" property="gRegisterTime" jdbcType="TIMESTAMP" />
+    <result column="G_INVITE_CODE" property="gInviteCode" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -66,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    G_ID, G_NAME, G_AVATARURL, G_REGESTER_TIME
+    G_ID, G_NAME, G_AVATARURL, G_REGISTER_TIME, G_INVITE_CODE
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.royians.sbs.pojo.MGroupExample" >
     select
@@ -100,9 +101,9 @@
   </delete>
   <insert id="insert" parameterType="cn.royians.sbs.pojo.MGroup" >
     insert into m_group (G_ID, G_NAME, G_AVATARURL, 
-      G_REGESTER_TIME)
+      G_REGISTER_TIME, G_INVITE_CODE)
     values (#{gId,jdbcType=INTEGER}, #{gName,jdbcType=VARCHAR}, #{gAvatarurl,jdbcType=VARCHAR}, 
-      #{gRegesterTime,jdbcType=TIMESTAMP})
+      #{gRegisterTime,jdbcType=TIMESTAMP}, #{gInviteCode,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="cn.royians.sbs.pojo.MGroup" >
     insert into m_group
@@ -116,8 +117,11 @@
       <if test="gAvatarurl != null" >
         G_AVATARURL,
       </if>
-      <if test="gRegesterTime != null" >
-        G_REGESTER_TIME,
+      <if test="gRegisterTime != null" >
+        G_REGISTER_TIME,
+      </if>
+      <if test="gInviteCode != null" >
+        G_INVITE_CODE,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -130,8 +134,11 @@
       <if test="gAvatarurl != null" >
         #{gAvatarurl,jdbcType=VARCHAR},
       </if>
-      <if test="gRegesterTime != null" >
-        #{gRegesterTime,jdbcType=TIMESTAMP},
+      <if test="gRegisterTime != null" >
+        #{gRegisterTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gInviteCode != null" >
+        #{gInviteCode,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -153,8 +160,11 @@
       <if test="record.gAvatarurl != null" >
         G_AVATARURL = #{record.gAvatarurl,jdbcType=VARCHAR},
       </if>
-      <if test="record.gRegesterTime != null" >
-        G_REGESTER_TIME = #{record.gRegesterTime,jdbcType=TIMESTAMP},
+      <if test="record.gRegisterTime != null" >
+        G_REGISTER_TIME = #{record.gRegisterTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.gInviteCode != null" >
+        G_INVITE_CODE = #{record.gInviteCode,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -166,7 +176,8 @@
     set G_ID = #{record.gId,jdbcType=INTEGER},
       G_NAME = #{record.gName,jdbcType=VARCHAR},
       G_AVATARURL = #{record.gAvatarurl,jdbcType=VARCHAR},
-      G_REGESTER_TIME = #{record.gRegesterTime,jdbcType=TIMESTAMP}
+      G_REGISTER_TIME = #{record.gRegisterTime,jdbcType=TIMESTAMP},
+      G_INVITE_CODE = #{record.gInviteCode,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -180,8 +191,11 @@
       <if test="gAvatarurl != null" >
         G_AVATARURL = #{gAvatarurl,jdbcType=VARCHAR},
       </if>
-      <if test="gRegesterTime != null" >
-        G_REGESTER_TIME = #{gRegesterTime,jdbcType=TIMESTAMP},
+      <if test="gRegisterTime != null" >
+        G_REGISTER_TIME = #{gRegisterTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gInviteCode != null" >
+        G_INVITE_CODE = #{gInviteCode,jdbcType=VARCHAR},
       </if>
     </set>
     where G_ID = #{gId,jdbcType=INTEGER}
@@ -190,7 +204,8 @@
     update m_group
     set G_NAME = #{gName,jdbcType=VARCHAR},
       G_AVATARURL = #{gAvatarurl,jdbcType=VARCHAR},
-      G_REGESTER_TIME = #{gRegesterTime,jdbcType=TIMESTAMP}
+      G_REGISTER_TIME = #{gRegisterTime,jdbcType=TIMESTAMP},
+      G_INVITE_CODE = #{gInviteCode,jdbcType=VARCHAR}
     where G_ID = #{gId,jdbcType=INTEGER}
   </update>
 </mapper>

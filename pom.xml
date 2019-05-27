@@ -26,6 +26,7 @@
         <mybatis-spring>2.0.1</mybatis-spring>
         <log4j.version>2.11.2</log4j.version>
         <fastjson.version>1.2.58</fastjson.version>
+        <jackson.version>2.9.8</jackson.version>
         <commons-logging.version>1.2</commons-logging.version>
         <druid.version>1.1.12</druid.version>
         <slf4j.version>1.7.25</slf4j.version>
@@ -166,6 +167,18 @@
             <version>${fastjson.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -253,5 +266,24 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
     </build>
 </project>

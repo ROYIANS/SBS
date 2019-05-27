@@ -9,7 +9,9 @@ public class MGroup {
 
     private String gAvatarurl;
 
-    private Date gRegesterTime;
+    private Date gRegisterTime;
+
+    private String gInviteCode;
 
     public Integer getgId() {
         return gId;
@@ -35,11 +37,19 @@ public class MGroup {
         this.gAvatarurl = gAvatarurl == null ? null : gAvatarurl.trim();
     }
 
-    public Date getgRegesterTime() {
-        return gRegesterTime;
+    public Date getgRegisterTime() {
+        return gRegisterTime;
     }
 
-    public void setgRegesterTime(Date gRegesterTime) {
-        this.gRegesterTime = gRegesterTime;
+    public void setgRegisterTime(Date gRegisterTime) {
+        this.gRegisterTime = gRegisterTime;
+    }
+
+    public String getgInviteCode() {
+        return gInviteCode;
+    }
+
+    public void setgInviteCode(String gInviteCode) {
+        this.gInviteCode = gInviteCode == null ? null : gInviteCode.trim();
     }
 }

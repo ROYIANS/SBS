@@ -4,12 +4,10 @@ import cn.royians.sbs.pojo.MUser;
 import cn.royians.sbs.pojo.Message;
 import cn.royians.sbs.service.CommonService;
 import cn.royians.sbs.service.UserService;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,31 +27,60 @@ public class UserController {
         this.commonService = commonService;
     }
 
-    @PostMapping("rol")
+    @PostMapping("/rol")
     @ResponseBody
     public Message registerOrLogin(@RequestParam String JSCODE, @RequestParam String INFO) {
-        Message message = new Message();
         try {
             MUser user = userService.registerOrLogin(JSCODE);
             if (user.getuNickname() == null) {
-                // userService.updateUserInfo(INFO, userInfo);
+                userService.updateUserInfo(INFO, user);
             } else {
-//                MUser old = userService.findUserByUID(user.getUid());
-//                if (!old.getUserSessionKey().equals(userInfo.getUserSessionKey())) {
-//                    userService.updateUserInfo(INFO, userInfo);
-//                }
+                MUser old = userService.findUserByUID(user.getuId());
+                if (!old.getuSessionKey().equals(user.getuSessionKey())) {
+                    userService.updateUserInfo(INFO, user);
+                }
             }
             Map<String, String> data = new HashMap<>();
-//            data.put("uid", userService.findUserByUID(userInfo.getUid()).getUid().toString());
-//            data.put("session_key", userService.findUserByUID(userInfo.getUid()).getUser3rdKey());
-            message.setData(data);
-            message.setCode("200");
-            message.setStatus("success");
+            data.put("uid", userService.findUserByUID(user.getuId()).getuId().toString());
+            data.put("session_key", userService.findUserByUID(user.getuId()).getU3rdKey());
+            return commonService.setSuccessMessage(data);
         } catch (Exception e) {
-            message.setData(e);
-            message.setCode("-1");
-            message.setStatus("error");
+            return commonService.setFailureMessage(e);
         }
-        return message;
+    }
+
+    @GetMapping("/{uid}")
+    @ResponseBody
+    public Message getUserInfo(@PathVariable Integer uid) {
+        try {
+            JSONObject data = userService.getUserInfoByUID(uid);
+            return commonService.setSuccessMessage(data);
+        } catch (Exception e) {
+            return commonService.setFailureMessage(e);
+        }
+    }
+
+    @GetMapping("/book/{uid}")
+    @ResponseBody
+    public Message getUsersBooks(@PathVariable Integer uid){
+        try {
+            JSONObject data = userService.getBooksOfUID(uid);
+            return commonService.setSuccessMessage(data);
+        }
+        catch (Exception e){
+            return commonService.setFailureMessage(e);
+        }
+    }
+
+    @GetMapping("/course/{uid}")
+    @ResponseBody
+    public Message getUserCourses(@PathVariable Integer uid){
+        try {
+            JSONObject data = userService.getCoursesOfUID(uid);
+            return commonService.setSuccessMessage(data);
+        }
+        catch (Exception e){
+            return commonService.setFailureMessage(e);
+        }
     }
 }
