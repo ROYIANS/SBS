@@ -29,6 +29,7 @@
         <commons-logging.version>1.2</commons-logging.version>
         <druid.version>1.1.12</druid.version>
         <slf4j.version>1.7.25</slf4j.version>
+        <httpclient.version>4.5.8</httpclient.version>
     </properties>
 
     <dependencies>
@@ -207,6 +208,11 @@
             <artifactId>slf4j-log4j12</artifactId>
             <version>${slf4j.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>${httpclient.version}</version>
         </dependency>
 
 
