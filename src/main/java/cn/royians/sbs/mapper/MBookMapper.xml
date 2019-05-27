@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.royians.sbs.mapper.MBookMapper" >
+  <resultMap id="BaseResultMap" type="cn.royians.sbs.pojo.MBook" >
+    <id column="B_ID" property="bId" jdbcType="INTEGER" />
+    <result column="B_UID" property="bUid" jdbcType="INTEGER" />
+    <result column="B_GID" property="bGid" jdbcType="INTEGER" />
+    <result column="B_TITLE" property="bTitle" jdbcType="VARCHAR" />
+    <result column="B_DESCRIPTION" property="bDescription" jdbcType="VARCHAR" />
+    <result column="B_CONTENT" property="bContent" jdbcType="CHAR" />
+    <result column="B_CREATE_TIME" property="bCreateTime" jdbcType="TIMESTAMP" />
+    <result column="B_UPDATE_TIME" property="bUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="B_IS_DEL" property="bIsDel" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    B_ID, B_UID, B_GID, B_TITLE, B_DESCRIPTION, B_CONTENT, B_CREATE_TIME, B_UPDATE_TIME, 
+    B_IS_DEL
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.royians.sbs.pojo.MBookExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from m_book
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from m_book
+    where B_ID = #{bId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from m_book
+    where B_ID = #{bId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.royians.sbs.pojo.MBookExample" >
+    delete from m_book
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.royians.sbs.pojo.MBook" >
+    insert into m_book (B_ID, B_UID, B_GID, 
+      B_TITLE, B_DESCRIPTION, B_CONTENT, 
+      B_CREATE_TIME, B_UPDATE_TIME, B_IS_DEL
+      )
+    values (#{bId,jdbcType=INTEGER}, #{bUid,jdbcType=INTEGER}, #{bGid,jdbcType=INTEGER}, 
+      #{bTitle,jdbcType=VARCHAR}, #{bDescription,jdbcType=VARCHAR}, #{bContent,jdbcType=CHAR}, 
+      #{bCreateTime,jdbcType=TIMESTAMP}, #{bUpdateTime,jdbcType=TIMESTAMP}, #{bIsDel,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.royians.sbs.pojo.MBook" >
+    insert into m_book
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bId != null" >
+        B_ID,
+      </if>
+      <if test="bUid != null" >
+        B_UID,
+      </if>
+      <if test="bGid != null" >
+        B_GID,
+      </if>
+      <if test="bTitle != null" >
+        B_TITLE,
+      </if>
+      <if test="bDescription != null" >
+        B_DESCRIPTION,
+      </if>
+      <if test="bContent != null" >
+        B_CONTENT,
+      </if>
+      <if test="bCreateTime != null" >
+        B_CREATE_TIME,
+      </if>
+      <if test="bUpdateTime != null" >
+        B_UPDATE_TIME,
+      </if>
+      <if test="bIsDel != null" >
+        B_IS_DEL,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bId != null" >
+        #{bId,jdbcType=INTEGER},
+      </if>
+      <if test="bUid != null" >
+        #{bUid,jdbcType=INTEGER},
+      </if>
+      <if test="bGid != null" >
+        #{bGid,jdbcType=INTEGER},
+      </if>
+      <if test="bTitle != null" >
+        #{bTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="bDescription != null" >
+        #{bDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="bContent != null" >
+        #{bContent,jdbcType=CHAR},
+      </if>
+      <if test="bCreateTime != null" >
+        #{bCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bUpdateTime != null" >
+        #{bUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bIsDel != null" >
+        #{bIsDel,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.royians.sbs.pojo.MBookExample" resultType="java.lang.Integer" >
+    select count(*) from m_book
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update m_book
+    <set >
+      <if test="record.bId != null" >
+        B_ID = #{record.bId,jdbcType=INTEGER},
+      </if>
+      <if test="record.bUid != null" >
+        B_UID = #{record.bUid,jdbcType=INTEGER},
+      </if>
+      <if test="record.bGid != null" >
+        B_GID = #{record.bGid,jdbcType=INTEGER},
+      </if>
+      <if test="record.bTitle != null" >
+        B_TITLE = #{record.bTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bDescription != null" >
+        B_DESCRIPTION = #{record.bDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bContent != null" >
+        B_CONTENT = #{record.bContent,jdbcType=CHAR},
+      </if>
+      <if test="record.bCreateTime != null" >
+        B_CREATE_TIME = #{record.bCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.bUpdateTime != null" >
+        B_UPDATE_TIME = #{record.bUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.bIsDel != null" >
+        B_IS_DEL = #{record.bIsDel,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update m_book
+    set B_ID = #{record.bId,jdbcType=INTEGER},
+      B_UID = #{record.bUid,jdbcType=INTEGER},
+      B_GID = #{record.bGid,jdbcType=INTEGER},
+      B_TITLE = #{record.bTitle,jdbcType=VARCHAR},
+      B_DESCRIPTION = #{record.bDescription,jdbcType=VARCHAR},
+      B_CONTENT = #{record.bContent,jdbcType=CHAR},
+      B_CREATE_TIME = #{record.bCreateTime,jdbcType=TIMESTAMP},
+      B_UPDATE_TIME = #{record.bUpdateTime,jdbcType=TIMESTAMP},
+      B_IS_DEL = #{record.bIsDel,jdbcType=BIT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.royians.sbs.pojo.MBook" >
+    update m_book
+    <set >
+      <if test="bUid != null" >
+        B_UID = #{bUid,jdbcType=INTEGER},
+      </if>
+      <if test="bGid != null" >
+        B_GID = #{bGid,jdbcType=INTEGER},
+      </if>
+      <if test="bTitle != null" >
+        B_TITLE = #{bTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="bDescription != null" >
+        B_DESCRIPTION = #{bDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="bContent != null" >
+        B_CONTENT = #{bContent,jdbcType=CHAR},
+      </if>
+      <if test="bCreateTime != null" >
+        B_CREATE_TIME = #{bCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bUpdateTime != null" >
+        B_UPDATE_TIME = #{bUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bIsDel != null" >
+        B_IS_DEL = #{bIsDel,jdbcType=BIT},
+      </if>
+    </set>
+    where B_ID = #{bId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.royians.sbs.pojo.MBook" >
+    update m_book
+    set B_UID = #{bUid,jdbcType=INTEGER},
+      B_GID = #{bGid,jdbcType=INTEGER},
+      B_TITLE = #{bTitle,jdbcType=VARCHAR},
+      B_DESCRIPTION = #{bDescription,jdbcType=VARCHAR},
+      B_CONTENT = #{bContent,jdbcType=CHAR},
+      B_CREATE_TIME = #{bCreateTime,jdbcType=TIMESTAMP},
+      B_UPDATE_TIME = #{bUpdateTime,jdbcType=TIMESTAMP},
+      B_IS_DEL = #{bIsDel,jdbcType=BIT}
+    where B_ID = #{bId,jdbcType=INTEGER}
+  </update>
+</mapper>

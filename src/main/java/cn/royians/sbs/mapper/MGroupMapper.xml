@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.royians.sbs.mapper.MGroupMapper" >
+  <resultMap id="BaseResultMap" type="cn.royians.sbs.pojo.MGroup" >
+    <id column="G_ID" property="gId" jdbcType="INTEGER" />
+    <result column="G_NAME" property="gName" jdbcType="VARCHAR" />
+    <result column="G_AVATARURL" property="gAvatarurl" jdbcType="VARCHAR" />
+    <result column="G_REGESTER_TIME" property="gRegesterTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    G_ID, G_NAME, G_AVATARURL, G_REGESTER_TIME
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.royians.sbs.pojo.MGroupExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from m_group
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from m_group
+    where G_ID = #{gId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from m_group
+    where G_ID = #{gId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.royians.sbs.pojo.MGroupExample" >
+    delete from m_group
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.royians.sbs.pojo.MGroup" >
+    insert into m_group (G_ID, G_NAME, G_AVATARURL, 
+      G_REGESTER_TIME)
+    values (#{gId,jdbcType=INTEGER}, #{gName,jdbcType=VARCHAR}, #{gAvatarurl,jdbcType=VARCHAR}, 
+      #{gRegesterTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.royians.sbs.pojo.MGroup" >
+    insert into m_group
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="gId != null" >
+        G_ID,
+      </if>
+      <if test="gName != null" >
+        G_NAME,
+      </if>
+      <if test="gAvatarurl != null" >
+        G_AVATARURL,
+      </if>
+      <if test="gRegesterTime != null" >
+        G_REGESTER_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="gId != null" >
+        #{gId,jdbcType=INTEGER},
+      </if>
+      <if test="gName != null" >
+        #{gName,jdbcType=VARCHAR},
+      </if>
+      <if test="gAvatarurl != null" >
+        #{gAvatarurl,jdbcType=VARCHAR},
+      </if>
+      <if test="gRegesterTime != null" >
+        #{gRegesterTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.royians.sbs.pojo.MGroupExample" resultType="java.lang.Integer" >
+    select count(*) from m_group
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update m_group
+    <set >
+      <if test="record.gId != null" >
+        G_ID = #{record.gId,jdbcType=INTEGER},
+      </if>
+      <if test="record.gName != null" >
+        G_NAME = #{record.gName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gAvatarurl != null" >
+        G_AVATARURL = #{record.gAvatarurl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gRegesterTime != null" >
+        G_REGESTER_TIME = #{record.gRegesterTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update m_group
+    set G_ID = #{record.gId,jdbcType=INTEGER},
+      G_NAME = #{record.gName,jdbcType=VARCHAR},
+      G_AVATARURL = #{record.gAvatarurl,jdbcType=VARCHAR},
+      G_REGESTER_TIME = #{record.gRegesterTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.royians.sbs.pojo.MGroup" >
+    update m_group
+    <set >
+      <if test="gName != null" >
+        G_NAME = #{gName,jdbcType=VARCHAR},
+      </if>
+      <if test="gAvatarurl != null" >
+        G_AVATARURL = #{gAvatarurl,jdbcType=VARCHAR},
+      </if>
+      <if test="gRegesterTime != null" >
+        G_REGESTER_TIME = #{gRegesterTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where G_ID = #{gId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.royians.sbs.pojo.MGroup" >
+    update m_group
+    set G_NAME = #{gName,jdbcType=VARCHAR},
+      G_AVATARURL = #{gAvatarurl,jdbcType=VARCHAR},
+      G_REGESTER_TIME = #{gRegesterTime,jdbcType=TIMESTAMP}
+    where G_ID = #{gId,jdbcType=INTEGER}
+  </update>
+</mapper>
