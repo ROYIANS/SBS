@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 
 public interface UserService {
     MUser registerOrLogin(String jscode);
+
     void updateUserInfo(String INFO, MUser newUser);
 
     MUser findUserByOpenID(String openid);

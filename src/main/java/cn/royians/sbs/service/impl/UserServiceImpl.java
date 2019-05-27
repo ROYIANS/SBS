@@ -110,7 +110,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public JSONObject getBooksOfUID(Integer uid) {
         JSONObject data = new JSONObject();
-        List<MBook> bookList = bookService.getBooksByUID(uid);
+        List<JSONObject> bookList = bookService.getBooksByUID(uid);
         data.put("uid", uid);
         data.put("books", bookList);
         return data;
