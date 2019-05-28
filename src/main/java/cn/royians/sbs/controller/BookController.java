@@ -4,6 +4,7 @@ import cn.royians.sbs.pojo.MBook;
 import cn.royians.sbs.pojo.Message;
 import cn.royians.sbs.service.BookService;
 import cn.royians.sbs.service.CommonService;
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,10 +17,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/api/book")
 public class BookController {
-    
+
     private final
     BookService bookService;
-    
+
     private final
     CommonService commonService;
 
@@ -51,9 +52,14 @@ public class BookController {
         }
     }
 
-    @PostMapping("any")
+    @PostMapping("/section/add")
     @ResponseBody
-    public JSONObject ok(JSONObject jsonObject) {
-        return jsonObject;
+    public Message addSection(@RequestParam Integer bid, @RequestParam Integer zid, @RequestParam String title, @RequestParam String content) {
+        try {
+            String data = bookService.addSection(bid, zid, title, content);
+            return commonService.setSuccessMessage(data);
+        } catch (Exception e) {
+            return commonService.setFailureMessage(e);
+        }
     }
 }
