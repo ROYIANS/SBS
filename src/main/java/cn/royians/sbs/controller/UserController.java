@@ -35,14 +35,14 @@ public class UserController {
             if (user.getuNickname() == null) {
                 userService.updateUserInfo(INFO, user);
             } else {
-                MUser old = userService.findUserByUID(user.getuId());
+                MUser old = commonService.findUserByUID(user.getuId());
                 if (!old.getuSessionKey().equals(user.getuSessionKey())) {
                     userService.updateUserInfo(INFO, user);
                 }
             }
             Map<String, String> data = new HashMap<>();
-            data.put("uid", userService.findUserByUID(user.getuId()).getuId().toString());
-            data.put("session_key", userService.findUserByUID(user.getuId()).getU3rdKey());
+            data.put("uid", commonService.findUserByUID(user.getuId()).getuId().toString());
+            data.put("session_key", commonService.findUserByUID(user.getuId()).getU3rdKey());
             return commonService.setSuccessMessage(data);
         } catch (Exception e) {
             return commonService.setFailureMessage(e);

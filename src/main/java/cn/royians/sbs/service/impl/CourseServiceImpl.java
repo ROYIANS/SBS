@@ -1,15 +1,24 @@
 package cn.royians.sbs.service.impl;
 
-import cn.royians.sbs.pojo.MCourse;
+import cn.royians.sbs.mapper.MCourseMapper;
+import cn.royians.sbs.service.CommonService;
 import cn.royians.sbs.service.CourseService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 @Service
 public class CourseServiceImpl implements CourseService {
-    @Override
-    public List<MCourse> getCoursesByUID(Integer uid) {
-        return null;
+
+    private final
+    MCourseMapper courseMapper;
+
+    private final
+    CommonService commonService;
+
+    @Autowired
+    public CourseServiceImpl(CommonService commonService, MCourseMapper courseMapper) {
+        this.commonService = commonService;
+        this.courseMapper = courseMapper;
     }
 }

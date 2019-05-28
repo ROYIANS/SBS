@@ -2,10 +2,7 @@ package cn.royians.sbs.service.impl;
 
 import cn.royians.sbs.mapper.MUserMapper;
 import cn.royians.sbs.pojo.*;
-import cn.royians.sbs.service.BookService;
-import cn.royians.sbs.service.CourseService;
-import cn.royians.sbs.service.GroupService;
-import cn.royians.sbs.service.UserService;
+import cn.royians.sbs.service.*;
 import cn.royians.sbs.util.HttpClientExample;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -22,24 +19,16 @@ public class UserServiceImpl implements UserService {
     MUserMapper userMapper;
 
     private final
-    GroupService groupService;
-
-    private final
-    BookService bookService;
-
-    private final
-    CourseService courseService;
+    CommonService commonService;
 
     @Autowired
-    public UserServiceImpl(MUserMapper userMapper, GroupService groupService, BookService bookService, CourseService courseService) {
+    public UserServiceImpl(CommonService commonService, MUserMapper userMapper) {
+        this.commonService = commonService;
         this.userMapper = userMapper;
-        this.groupService = groupService;
-        this.bookService = bookService;
-        this.courseService = courseService;
     }
 
     @Override
-    public MUser registerOrLogin(String JSCODE) {
+    public MUser registerOrLogin(String JSCODE) throws Exception {
         try {
             String APPID = "";
             String SECRET = "";
@@ -65,7 +54,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUserInfo(String INFO, MUser newUser) {
+    public void updateUserInfo(String INFO, MUser newUser) throws Exception {
         JSONObject object = JSON.parseObject(INFO);
         newUser.setuNickname(object.getString("nickname"));
         newUser.setuAvatarUrl(object.getString("avatarUrl"));
@@ -78,7 +67,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public MUser findUserByOpenID(String openid) {
+    public MUser findUserByOpenID(String openid) throws Exception {
         MUserExample userInfoExample = new MUserExample();
         MUserExample.Criteria criteria = userInfoExample.createCriteria();
         criteria.andUOpenidEqualTo(openid);
@@ -86,15 +75,11 @@ public class UserServiceImpl implements UserService {
         return users.get(0);
     }
 
-    @Override
-    public MUser findUserByUID(Integer uid) {
-        return userMapper.selectByPrimaryKey(uid);
-    }
 
     @Override
-    public JSONObject getUserInfoByUID(Integer uid) {
-        MUser user = this.findUserByUID(uid);
-        MGroup group = groupService.getGroupByGID(user.getuGid());
+    public JSONObject getUserInfoByUID(Integer uid) throws Exception {
+        MUser user = commonService.findUserByUID(uid);
+        MGroup group = commonService.getGroupInfoByGID(user.getuGid());
         JSONObject data = new JSONObject();
         data.put("uid", uid);
         data.put("session_key", user.getU3rdKey());
@@ -108,18 +93,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public JSONObject getBooksOfUID(Integer uid) {
+    public JSONObject getBooksOfUID(Integer uid) throws Exception {
         JSONObject data = new JSONObject();
-        List<JSONObject> bookList = bookService.getBooksByUID(uid);
+        List<JSONObject> bookList = commonService.getBooksByUID(uid);
         data.put("uid", uid);
         data.put("books", bookList);
         return data;
     }
 
     @Override
-    public JSONObject getCoursesOfUID(Integer uid) {
+    public JSONObject getCoursesOfUID(Integer uid) throws Exception {
         JSONObject data = new JSONObject();
-        List<MCourse> courseList = courseService.getCoursesByUID(uid);
+        List<MCourse> courseList = commonService.getCoursesByUID(uid);
         data.put("uid", uid);
         data.put("books", courseList);
         return data;

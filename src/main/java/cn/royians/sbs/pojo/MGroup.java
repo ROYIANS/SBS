@@ -7,7 +7,7 @@ public class MGroup {
 
     private String gName;
 
-    private String gAvatarurl;
+    private String gAvatarurl;//头像地址
 
     private Date gRegisterTime;
 
