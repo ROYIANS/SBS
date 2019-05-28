@@ -13,7 +13,7 @@ public interface CommonService {
     MCourse getCourseInfoByCID(Integer cid) throws Exception;
     MGroup getGroupInfoByGID(Integer gid) throws Exception;
 
-    List<JSONObject> getBooksByUID(Integer uid) throws Exception;
+    List<JSONObject> getBooksByUIDOrGID(Integer id, String idType) throws Exception;
 
     List<MCourse> getCoursesByUID(Integer uid) throws Exception;
 

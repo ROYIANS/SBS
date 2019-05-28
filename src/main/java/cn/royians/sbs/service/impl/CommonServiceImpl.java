@@ -75,16 +75,23 @@ public class CommonServiceImpl implements CommonService {
     }
 
     @Override
-    public List<JSONObject> getBooksByUID(Integer uid) throws Exception {
+    public List<JSONObject> getBooksByUIDOrGID(Integer id, String idType) throws Exception {
         MBookExample bookExample = new MBookExample();
         MBookExample.Criteria criteria = bookExample.createCriteria();
-        criteria.andBUidEqualTo(uid);
+        if (idType.equals("uid")){
+            criteria.andBUidEqualTo(id);
+        }
+        if (idType.equals("gid")) {
+            criteria.andBGidEqualTo(id);
+        }
         List<MBook> bookList = bookMapper.selectByExample(bookExample);
         List<JSONObject> jsonObjectList = new LinkedList<>();
         for(MBook book: bookList) {
             if (!book.getbIsDel()) {
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("bid", book.getbId());
+                jsonObject.put("uid", book.getbUid());
+                jsonObject.put("gid", book.getbGid());
                 jsonObject.put("title", book.getbTitle());
                 jsonObject.put("description", book.getbDescription());
                 jsonObject.put("create_time", book.getbCreateTime());

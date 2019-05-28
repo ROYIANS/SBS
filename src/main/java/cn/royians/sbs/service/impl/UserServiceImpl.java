@@ -95,7 +95,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public JSONObject getBooksOfUID(Integer uid) throws Exception {
         JSONObject data = new JSONObject();
-        List<JSONObject> bookList = commonService.getBooksByUID(uid);
+        List<JSONObject> bookList = commonService.getBooksByUIDOrGID(uid, "uid");
         data.put("uid", uid);
         data.put("books", bookList);
         return data;
