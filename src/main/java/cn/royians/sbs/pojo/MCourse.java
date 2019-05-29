@@ -7,6 +7,10 @@ public class MCourse {
 
     private Integer cUid;
 
+    private String cContent;
+
+    private String cImgUrls;
+
     private String cVidUrl;
 
     private Date cCreateTime;
@@ -27,6 +31,22 @@ public class MCourse {
 
     public void setcUid(Integer cUid) {
         this.cUid = cUid;
+    }
+
+    public String getcContent() {
+        return cContent;
+    }
+
+    public void setcContent(String cContent) {
+        this.cContent = cContent == null ? null : cContent.trim();
+    }
+
+    public String getcImgUrls() {
+        return cImgUrls;
+    }
+
+    public void setcImgUrls(String cImgUrls) {
+        this.cImgUrls = cImgUrls == null ? null : cImgUrls.trim();
     }
 
     public String getcVidUrl() {

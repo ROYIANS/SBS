@@ -4,13 +4,11 @@
   <resultMap id="BaseResultMap" type="cn.royians.sbs.pojo.MCourse" >
     <id column="C_ID" property="cId" jdbcType="INTEGER" />
     <result column="C_UID" property="cUid" jdbcType="INTEGER" />
+    <result column="C_CONTENT" property="cContent" jdbcType="CHAR" />
+    <result column="C_IMG_URLS" property="cImgUrls" jdbcType="CHAR" />
     <result column="C_VID_URL" property="cVidUrl" jdbcType="VARCHAR" />
     <result column="C_CREATE_TIME" property="cCreateTime" jdbcType="TIMESTAMP" />
     <result column="C_IS_DEL" property="cIsDel" jdbcType="BIT" />
-  </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="cn.royians.sbs.pojo.MCourseWithBLOBs" extends="BaseResultMap" >
-    <result column="C_CONTENT" property="cContent" jdbcType="LONGVARCHAR" />
-    <result column="C_IMG_URLS" property="cImgUrls" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -71,27 +69,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    C_ID, C_UID, C_VID_URL, C_CREATE_TIME, C_IS_DEL
+    C_ID, C_UID, C_CONTENT, C_IMG_URLS, C_VID_URL, C_CREATE_TIME, C_IS_DEL
   </sql>
-  <sql id="Blob_Column_List" >
-    C_CONTENT, C_IMG_URLS
-  </sql>
-  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="cn.royians.sbs.pojo.MCourseExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from m_course
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.royians.sbs.pojo.MCourseExample" >
     select
     <if test="distinct" >
@@ -106,11 +85,9 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from m_course
     where C_ID = #{cId,jdbcType=INTEGER}
   </select>
@@ -124,15 +101,15 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="cn.royians.sbs.pojo.MCourseWithBLOBs" >
-    insert into m_course (C_ID, C_UID, C_VID_URL, 
-      C_CREATE_TIME, C_IS_DEL, C_CONTENT, 
-      C_IMG_URLS)
-    values (#{cId,jdbcType=INTEGER}, #{cUid,jdbcType=INTEGER}, #{cVidUrl,jdbcType=VARCHAR}, 
-      #{cCreateTime,jdbcType=TIMESTAMP}, #{cIsDel,jdbcType=BIT}, #{cContent,jdbcType=LONGVARCHAR}, 
-      #{cImgUrls,jdbcType=LONGVARCHAR})
+  <insert id="insert" parameterType="cn.royians.sbs.pojo.MCourse" >
+    insert into m_course (C_ID, C_UID, C_CONTENT, 
+      C_IMG_URLS, C_VID_URL, C_CREATE_TIME, 
+      C_IS_DEL)
+    values (#{cId,jdbcType=INTEGER}, #{cUid,jdbcType=INTEGER}, #{cContent,jdbcType=CHAR}, 
+      #{cImgUrls,jdbcType=CHAR}, #{cVidUrl,jdbcType=VARCHAR}, #{cCreateTime,jdbcType=TIMESTAMP}, 
+      #{cIsDel,jdbcType=BIT})
   </insert>
-  <insert id="insertSelective" parameterType="cn.royians.sbs.pojo.MCourseWithBLOBs" >
+  <insert id="insertSelective" parameterType="cn.royians.sbs.pojo.MCourse" >
     insert into m_course
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="cId != null" >
@@ -140,6 +117,12 @@
       </if>
       <if test="cUid != null" >
         C_UID,
+      </if>
+      <if test="cContent != null" >
+        C_CONTENT,
+      </if>
+      <if test="cImgUrls != null" >
+        C_IMG_URLS,
       </if>
       <if test="cVidUrl != null" >
         C_VID_URL,
@@ -150,12 +133,6 @@
       <if test="cIsDel != null" >
         C_IS_DEL,
       </if>
-      <if test="cContent != null" >
-        C_CONTENT,
-      </if>
-      <if test="cImgUrls != null" >
-        C_IMG_URLS,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="cId != null" >
@@ -163,6 +140,12 @@
       </if>
       <if test="cUid != null" >
         #{cUid,jdbcType=INTEGER},
+      </if>
+      <if test="cContent != null" >
+        #{cContent,jdbcType=CHAR},
+      </if>
+      <if test="cImgUrls != null" >
+        #{cImgUrls,jdbcType=CHAR},
       </if>
       <if test="cVidUrl != null" >
         #{cVidUrl,jdbcType=VARCHAR},
@@ -172,12 +155,6 @@
       </if>
       <if test="cIsDel != null" >
         #{cIsDel,jdbcType=BIT},
-      </if>
-      <if test="cContent != null" >
-        #{cContent,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="cImgUrls != null" >
-        #{cImgUrls,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -196,6 +173,12 @@
       <if test="record.cUid != null" >
         C_UID = #{record.cUid,jdbcType=INTEGER},
       </if>
+      <if test="record.cContent != null" >
+        C_CONTENT = #{record.cContent,jdbcType=CHAR},
+      </if>
+      <if test="record.cImgUrls != null" >
+        C_IMG_URLS = #{record.cImgUrls,jdbcType=CHAR},
+      </if>
       <if test="record.cVidUrl != null" >
         C_VID_URL = #{record.cVidUrl,jdbcType=VARCHAR},
       </if>
@@ -205,26 +188,7 @@
       <if test="record.cIsDel != null" >
         C_IS_DEL = #{record.cIsDel,jdbcType=BIT},
       </if>
-      <if test="record.cContent != null" >
-        C_CONTENT = #{record.cContent,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="record.cImgUrls != null" >
-        C_IMG_URLS = #{record.cImgUrls,jdbcType=LONGVARCHAR},
-      </if>
     </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map" >
-    update m_course
-    set C_ID = #{record.cId,jdbcType=INTEGER},
-      C_UID = #{record.cUid,jdbcType=INTEGER},
-      C_VID_URL = #{record.cVidUrl,jdbcType=VARCHAR},
-      C_CREATE_TIME = #{record.cCreateTime,jdbcType=TIMESTAMP},
-      C_IS_DEL = #{record.cIsDel,jdbcType=BIT},
-      C_CONTENT = #{record.cContent,jdbcType=LONGVARCHAR},
-      C_IMG_URLS = #{record.cImgUrls,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -233,6 +197,8 @@
     update m_course
     set C_ID = #{record.cId,jdbcType=INTEGER},
       C_UID = #{record.cUid,jdbcType=INTEGER},
+      C_CONTENT = #{record.cContent,jdbcType=CHAR},
+      C_IMG_URLS = #{record.cImgUrls,jdbcType=CHAR},
       C_VID_URL = #{record.cVidUrl,jdbcType=VARCHAR},
       C_CREATE_TIME = #{record.cCreateTime,jdbcType=TIMESTAMP},
       C_IS_DEL = #{record.cIsDel,jdbcType=BIT}
@@ -240,11 +206,17 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.royians.sbs.pojo.MCourseWithBLOBs" >
+  <update id="updateByPrimaryKeySelective" parameterType="cn.royians.sbs.pojo.MCourse" >
     update m_course
     <set >
       <if test="cUid != null" >
         C_UID = #{cUid,jdbcType=INTEGER},
+      </if>
+      <if test="cContent != null" >
+        C_CONTENT = #{cContent,jdbcType=CHAR},
+      </if>
+      <if test="cImgUrls != null" >
+        C_IMG_URLS = #{cImgUrls,jdbcType=CHAR},
       </if>
       <if test="cVidUrl != null" >
         C_VID_URL = #{cVidUrl,jdbcType=VARCHAR},
@@ -255,28 +227,14 @@
       <if test="cIsDel != null" >
         C_IS_DEL = #{cIsDel,jdbcType=BIT},
       </if>
-      <if test="cContent != null" >
-        C_CONTENT = #{cContent,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="cImgUrls != null" >
-        C_IMG_URLS = #{cImgUrls,jdbcType=LONGVARCHAR},
-      </if>
     </set>
-    where C_ID = #{cId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.royians.sbs.pojo.MCourseWithBLOBs" >
-    update m_course
-    set C_UID = #{cUid,jdbcType=INTEGER},
-      C_VID_URL = #{cVidUrl,jdbcType=VARCHAR},
-      C_CREATE_TIME = #{cCreateTime,jdbcType=TIMESTAMP},
-      C_IS_DEL = #{cIsDel,jdbcType=BIT},
-      C_CONTENT = #{cContent,jdbcType=LONGVARCHAR},
-      C_IMG_URLS = #{cImgUrls,jdbcType=LONGVARCHAR}
     where C_ID = #{cId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="cn.royians.sbs.pojo.MCourse" >
     update m_course
     set C_UID = #{cUid,jdbcType=INTEGER},
+      C_CONTENT = #{cContent,jdbcType=CHAR},
+      C_IMG_URLS = #{cImgUrls,jdbcType=CHAR},
       C_VID_URL = #{cVidUrl,jdbcType=VARCHAR},
       C_CREATE_TIME = #{cCreateTime,jdbcType=TIMESTAMP},
       C_IS_DEL = #{cIsDel,jdbcType=BIT}

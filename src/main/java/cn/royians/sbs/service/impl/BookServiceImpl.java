@@ -181,4 +181,10 @@ public class BookServiceImpl implements BookService {
         data.put("data", books);
         return data;
     }
+
+    @Override
+    public String realDdel(Integer bid) throws Exception {
+        bookMapper.deleteByPrimaryKey(bid);
+        return "real delete this book.";
+    }
 }

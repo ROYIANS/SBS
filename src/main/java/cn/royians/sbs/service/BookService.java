@@ -24,4 +24,6 @@ public interface BookService {
     String delSection(Integer bid, Integer zid, Integer sid) throws Exception;
 
     JSONObject getBookList(Integer gid) throws Exception;
+
+    String realDdel(Integer bid) throws Exception;
 }

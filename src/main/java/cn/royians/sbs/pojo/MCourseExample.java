@@ -225,6 +225,146 @@ public class MCourseExample {
             return (Criteria) this;
         }
 
+        public Criteria andCContentIsNull() {
+            addCriterion("C_CONTENT is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCContentIsNotNull() {
+            addCriterion("C_CONTENT is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCContentEqualTo(String value) {
+            addCriterion("C_CONTENT =", value, "cContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andCContentNotEqualTo(String value) {
+            addCriterion("C_CONTENT <>", value, "cContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andCContentGreaterThan(String value) {
+            addCriterion("C_CONTENT >", value, "cContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andCContentGreaterThanOrEqualTo(String value) {
+            addCriterion("C_CONTENT >=", value, "cContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andCContentLessThan(String value) {
+            addCriterion("C_CONTENT <", value, "cContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andCContentLessThanOrEqualTo(String value) {
+            addCriterion("C_CONTENT <=", value, "cContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andCContentLike(String value) {
+            addCriterion("C_CONTENT like", value, "cContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andCContentNotLike(String value) {
+            addCriterion("C_CONTENT not like", value, "cContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andCContentIn(List<String> values) {
+            addCriterion("C_CONTENT in", values, "cContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andCContentNotIn(List<String> values) {
+            addCriterion("C_CONTENT not in", values, "cContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andCContentBetween(String value1, String value2) {
+            addCriterion("C_CONTENT between", value1, value2, "cContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andCContentNotBetween(String value1, String value2) {
+            addCriterion("C_CONTENT not between", value1, value2, "cContent");
+            return (Criteria) this;
+        }
+
+        public Criteria andCImgUrlsIsNull() {
+            addCriterion("C_IMG_URLS is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCImgUrlsIsNotNull() {
+            addCriterion("C_IMG_URLS is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCImgUrlsEqualTo(String value) {
+            addCriterion("C_IMG_URLS =", value, "cImgUrls");
+            return (Criteria) this;
+        }
+
+        public Criteria andCImgUrlsNotEqualTo(String value) {
+            addCriterion("C_IMG_URLS <>", value, "cImgUrls");
+            return (Criteria) this;
+        }
+
+        public Criteria andCImgUrlsGreaterThan(String value) {
+            addCriterion("C_IMG_URLS >", value, "cImgUrls");
+            return (Criteria) this;
+        }
+
+        public Criteria andCImgUrlsGreaterThanOrEqualTo(String value) {
+            addCriterion("C_IMG_URLS >=", value, "cImgUrls");
+            return (Criteria) this;
+        }
+
+        public Criteria andCImgUrlsLessThan(String value) {
+            addCriterion("C_IMG_URLS <", value, "cImgUrls");
+            return (Criteria) this;
+        }
+
+        public Criteria andCImgUrlsLessThanOrEqualTo(String value) {
+            addCriterion("C_IMG_URLS <=", value, "cImgUrls");
+            return (Criteria) this;
+        }
+
+        public Criteria andCImgUrlsLike(String value) {
+            addCriterion("C_IMG_URLS like", value, "cImgUrls");
+            return (Criteria) this;
+        }
+
+        public Criteria andCImgUrlsNotLike(String value) {
+            addCriterion("C_IMG_URLS not like", value, "cImgUrls");
+            return (Criteria) this;
+        }
+
+        public Criteria andCImgUrlsIn(List<String> values) {
+            addCriterion("C_IMG_URLS in", values, "cImgUrls");
+            return (Criteria) this;
+        }
+
+        public Criteria andCImgUrlsNotIn(List<String> values) {
+            addCriterion("C_IMG_URLS not in", values, "cImgUrls");
+            return (Criteria) this;
+        }
+
+        public Criteria andCImgUrlsBetween(String value1, String value2) {
+            addCriterion("C_IMG_URLS between", value1, value2, "cImgUrls");
+            return (Criteria) this;
+        }
+
+        public Criteria andCImgUrlsNotBetween(String value1, String value2) {
+            addCriterion("C_IMG_URLS not between", value1, value2, "cImgUrls");
+            return (Criteria) this;
+        }
+
         public Criteria andCVidUrlIsNull() {
             addCriterion("C_VID_URL is null");
             return (Criteria) this;

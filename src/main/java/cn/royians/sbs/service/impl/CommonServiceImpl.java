@@ -6,6 +6,7 @@ import cn.royians.sbs.mapper.MGroupMapper;
 import cn.royians.sbs.mapper.MUserMapper;
 import cn.royians.sbs.pojo.*;
 import cn.royians.sbs.service.CommonService;
+import cn.royians.sbs.util.DateExample;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -77,8 +78,23 @@ public class CommonServiceImpl implements CommonService {
     }
 
     @Override
-    public MCourse getCourseInfoByCID(Integer cid) throws Exception {
-        return null;
+    public JSONObject getCourseInfoByCID(Integer cid) throws Exception {
+        JSONObject jsonObject = new JSONObject();
+        MCourse course = courseMapper.selectByPrimaryKey(cid);
+        JSONObject userInfo = this.getUserInfoByUID(course.getcUid());
+        DateExample dateExample = new DateExample();
+        String s = dateExample.dateToWord(course.getcCreateTime());
+        jsonObject.put("userInfo", userInfo);
+        jsonObject.put("content", course.getcContent());
+        jsonObject.put("imgUrls", course.getcImgUrls());
+        jsonObject.put("vidUrl", course.getcVidUrl());
+        jsonObject.put("time", s);
+        return jsonObject;
+    }
+
+    @Override
+    public MCourse findCourseByCID(Integer cid) throws Exception {
+        return courseMapper.selectByPrimaryKey(cid);
     }
 
     @Override
@@ -106,6 +122,7 @@ public class CommonServiceImpl implements CommonService {
     public List<JSONObject> getBooksByUIDOrGID(Integer id, String idType) throws Exception {
         MBookExample bookExample = new MBookExample();
         MBookExample.Criteria criteria = bookExample.createCriteria();
+        criteria.andBIsDelEqualTo(false);
         if (idType.equals("uid")){
             criteria.andBUidEqualTo(id);
         }
@@ -132,7 +149,22 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public List<MCourse> getCoursesByUID(Integer uid) throws Exception {
-        return null;
+        MCourseExample courseExample = new MCourseExample();
+        MCourseExample.Criteria criteria = courseExample.createCriteria();
+        criteria.andCUidEqualTo(uid);
+        criteria.andCIsDelEqualTo(false);
+        return courseMapper.selectByExample(courseExample);
+    }
+
+    @Override
+    public List<MCourse> getCoursesBGID(Integer gid) throws Exception {
+        List<MUser> users = getUsersByGID(gid);
+        List<MCourse> list = new LinkedList<>();
+        for (MUser user : users) {
+            List<MCourse> courses = this.getCoursesByUID(user.getuId());
+            list.addAll(courses);
+        }
+        return list;
     }
 
     @Override

@@ -2,7 +2,6 @@ package cn.royians.sbs.mapper;
 
 import cn.royians.sbs.pojo.MCourse;
 import cn.royians.sbs.pojo.MCourseExample;
-import cn.royians.sbs.pojo.MCourseWithBLOBs;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
@@ -13,25 +12,19 @@ public interface MCourseMapper {
 
     int deleteByPrimaryKey(Integer cId);
 
-    int insert(MCourseWithBLOBs record);
+    int insert(MCourse record);
 
-    int insertSelective(MCourseWithBLOBs record);
-
-    List<MCourseWithBLOBs> selectByExampleWithBLOBs(MCourseExample example);
+    int insertSelective(MCourse record);
 
     List<MCourse> selectByExample(MCourseExample example);
 
-    MCourseWithBLOBs selectByPrimaryKey(Integer cId);
+    MCourse selectByPrimaryKey(Integer cId);
 
-    int updateByExampleSelective(@Param("record") MCourseWithBLOBs record, @Param("example") MCourseExample example);
-
-    int updateByExampleWithBLOBs(@Param("record") MCourseWithBLOBs record, @Param("example") MCourseExample example);
+    int updateByExampleSelective(@Param("record") MCourse record, @Param("example") MCourseExample example);
 
     int updateByExample(@Param("record") MCourse record, @Param("example") MCourseExample example);
 
-    int updateByPrimaryKeySelective(MCourseWithBLOBs record);
-
-    int updateByPrimaryKeyWithBLOBs(MCourseWithBLOBs record);
+    int updateByPrimaryKeySelective(MCourse record);
 
     int updateByPrimaryKey(MCourse record);
 }

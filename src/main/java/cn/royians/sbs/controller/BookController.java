@@ -105,6 +105,17 @@ public class BookController {
         }
     }
 
+    @PostMapping("realDel/{bid}")
+    @ResponseBody
+    public Message realDel(@PathVariable Integer bid) {
+        try {
+            String data = bookService.realDdel(bid);
+            return commonService.setSuccessMessage(data);
+        } catch (Exception e) {
+            return commonService.setFailureMessage(e);
+        }
+    }
+
     @PostMapping("chapter/del")
     @ResponseBody
     public Message delChapter(@RequestParam Integer bid, @RequestParam Integer zid) {
