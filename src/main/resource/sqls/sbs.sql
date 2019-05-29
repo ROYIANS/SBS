@@ -1,5 +1,5 @@
 create schema sbs collate utf8_general_ci;
-
+use sbs;
 create table m_group
 (
   G_ID int auto_increment,
