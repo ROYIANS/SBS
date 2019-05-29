@@ -9,13 +9,15 @@ public interface CommonService {
     Message setSuccessMessage(Object data);
     Message setFailureMessage(Exception e);
     MBook getBookInfoByBID(Integer bid) throws Exception;
-    MUser getUserInfoByUID(Integer uid) throws Exception;
+    JSONObject getUserInfoByUID(Integer uid) throws Exception;
     MCourse getCourseInfoByCID(Integer cid) throws Exception;
-    MGroup getGroupInfoByGID(Integer gid) throws Exception;
-
+    MGroup findGroupByGID(Integer gid) throws Exception;
+    Integer getGIDByInviteCode(String code) throws Exception;
+    void updateUser(MUser user) throws Exception;
     List<JSONObject> getBooksByUIDOrGID(Integer id, String idType) throws Exception;
 
     List<MCourse> getCoursesByUID(Integer uid) throws Exception;
 
     MUser findUserByUID(Integer uid) throws Exception;
+    List<MUser> getUsersByGID(Integer gid) throws Exception;
 }

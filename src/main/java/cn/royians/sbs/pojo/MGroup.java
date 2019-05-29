@@ -7,11 +7,13 @@ public class MGroup {
 
     private String gName;
 
-    private String gAvatarurl;//头像地址
+    private String gAvatarurl;
 
     private Date gRegisterTime;
 
     private String gInviteCode;
+
+    private Integer gAndmin;
 
     public Integer getgId() {
         return gId;
@@ -51,5 +53,13 @@ public class MGroup {
 
     public void setgInviteCode(String gInviteCode) {
         this.gInviteCode = gInviteCode == null ? null : gInviteCode.trim();
+    }
+
+    public Integer getgAndmin() {
+        return gAndmin;
+    }
+
+    public void setgAndmin(Integer gAndmin) {
+        this.gAndmin = gAndmin;
     }
 }

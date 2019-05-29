@@ -10,7 +10,6 @@ public interface UserService {
 
     MUser findUserByOpenID(String openid) throws Exception;
 
-    JSONObject getUserInfoByUID(Integer uid) throws Exception;
 
     JSONObject getBooksOfUID(Integer uid) throws Exception;
 

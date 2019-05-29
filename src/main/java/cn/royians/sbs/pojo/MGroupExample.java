@@ -434,6 +434,66 @@ public class MGroupExample {
             addCriterion("G_INVITE_CODE not between", value1, value2, "gInviteCode");
             return (Criteria) this;
         }
+
+        public Criteria andGAndminIsNull() {
+            addCriterion("G_ANDMIN is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGAndminIsNotNull() {
+            addCriterion("G_ANDMIN is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGAndminEqualTo(Integer value) {
+            addCriterion("G_ANDMIN =", value, "gAndmin");
+            return (Criteria) this;
+        }
+
+        public Criteria andGAndminNotEqualTo(Integer value) {
+            addCriterion("G_ANDMIN <>", value, "gAndmin");
+            return (Criteria) this;
+        }
+
+        public Criteria andGAndminGreaterThan(Integer value) {
+            addCriterion("G_ANDMIN >", value, "gAndmin");
+            return (Criteria) this;
+        }
+
+        public Criteria andGAndminGreaterThanOrEqualTo(Integer value) {
+            addCriterion("G_ANDMIN >=", value, "gAndmin");
+            return (Criteria) this;
+        }
+
+        public Criteria andGAndminLessThan(Integer value) {
+            addCriterion("G_ANDMIN <", value, "gAndmin");
+            return (Criteria) this;
+        }
+
+        public Criteria andGAndminLessThanOrEqualTo(Integer value) {
+            addCriterion("G_ANDMIN <=", value, "gAndmin");
+            return (Criteria) this;
+        }
+
+        public Criteria andGAndminIn(List<Integer> values) {
+            addCriterion("G_ANDMIN in", values, "gAndmin");
+            return (Criteria) this;
+        }
+
+        public Criteria andGAndminNotIn(List<Integer> values) {
+            addCriterion("G_ANDMIN not in", values, "gAndmin");
+            return (Criteria) this;
+        }
+
+        public Criteria andGAndminBetween(Integer value1, Integer value2) {
+            addCriterion("G_ANDMIN between", value1, value2, "gAndmin");
+            return (Criteria) this;
+        }
+
+        public Criteria andGAndminNotBetween(Integer value1, Integer value2) {
+            addCriterion("G_ANDMIN not between", value1, value2, "gAndmin");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

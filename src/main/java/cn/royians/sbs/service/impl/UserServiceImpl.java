@@ -76,21 +76,7 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    @Override
-    public JSONObject getUserInfoByUID(Integer uid) throws Exception {
-        MUser user = commonService.findUserByUID(uid);
-        MGroup group = commonService.getGroupInfoByGID(user.getuGid());
-        JSONObject data = new JSONObject();
-        data.put("uid", uid);
-        data.put("session_key", user.getU3rdKey());
-        data.put("nickname", user.getuNickname());
-        data.put("avatarUrl", user.getuAvatarUrl());
-        data.put("group", group);
-        data.put("city", user.getuCity());
-        data.put("language", user.getuLanguage());
-        data.put("registerTime", user.getuRegisterTime());
-        return data;
-    }
+
 
     @Override
     public JSONObject getBooksOfUID(Integer uid) throws Exception {

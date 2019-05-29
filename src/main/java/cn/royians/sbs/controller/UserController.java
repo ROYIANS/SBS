@@ -53,7 +53,7 @@ public class UserController {
     @ResponseBody
     public Message getUserInfo(@PathVariable Integer uid) {
         try {
-            JSONObject data = userService.getUserInfoByUID(uid);
+            JSONObject data = commonService.getUserInfoByUID(uid);
             return commonService.setSuccessMessage(data);
         } catch (Exception e) {
             return commonService.setFailureMessage(e);
