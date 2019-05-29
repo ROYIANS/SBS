@@ -126,12 +126,15 @@ image.loading::after {
 	right: 0;
 	bottom: 0;
 	z-index: -1;
-	font-size: 32rpx;
 	margin: auto;
 	color: #ccc;
 	-webkit-animation: cuIcon-spin 2s infinite linear;
 	animation: cuIcon-spin 2s infinite linear;
 	display: block;
+}
+
+image.loading::after {
+	font-size: 32rpx;
 }
 
 .response {

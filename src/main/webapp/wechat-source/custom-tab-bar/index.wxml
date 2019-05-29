@@ -1,0 +1,54 @@
+<!--pages/common/footer/footer.wxml-->
+<view class='tab-bar'>
+    <view class='bar'>
+        <view class="menu {{selected === 1 ? 'active' : ''}}"
+              data-path="/pages/index/index"
+              data-index="1"
+              bindtap="switchTab">
+            <view class="menu-item">
+                <view class="span icon cuIcon-home{{selected === 1 ? 'fill' : ''}}"/>
+                <view class="text">首页</view>
+            </view>
+        </view>
+        <view class="menu {{selected === 2 ? 'active' : ''}}"
+              data-path="/pages/book/book"
+              data-index="2"
+              bindtap="switchTab">
+            <view class="menu-item">
+                <view class="span icon cuIcon-discover{{selected === 2 ? 'fill' : ''}}"/>
+                <view class="text">手册</view>
+            </view>
+        </view>
+        <view class='menu active'>
+            <button bindtap='publish' class='plus-button'
+                    hover-class="PBHover">
+                <view class="span icon cuIcon-add"/>
+            </button>
+        </view>
+        <view class="menu {{selected === 3 ? 'active' : ''}}"
+              data-path="/pages/group/group"
+              data-index="3"
+              bindtap="switchTab">
+            <view class="menu-item">
+                <view class="span icon cuIcon-friend{{selected === 3 ? 'fill' : ''}}"/>
+                <view class="text">团队</view>
+            </view>
+        </view>
+        <view class="menu {{selected === 4 ? 'active' : ''}}"
+              data-path="/pages/me/me"
+              data-index="4"
+              bindtap="switchTab">
+            <view class="menu-item">
+                <view class="span icon cuIcon-my{{selected === 4 ? 'fill' : ''}}"/>
+                <view class="text">我的</view>
+            </view>
+        </view>
+    </view>
+
+    <!--<view class='circle circle-back'/>-->
+    <!--<view class='circle circle-front'/>-->
+    <!--<button bindtap='publish' class='plus-button'-->
+    <!--hover-class="PBHover">-->
+    <!--<view class="span icon cuIcon-add"/>-->
+    <!--</button>-->
+</view>

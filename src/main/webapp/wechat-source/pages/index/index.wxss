@@ -1,21 +1,102 @@
 /**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+@import "/colorui/icon.wxss";
+@import "/colorui/main.wxss";
+.page {
+  display: block;
+  min-height: 100%;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  background-color: #fff;
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.search {
+  background-color: #212121!important;
 }
 
-.userinfo-nickname {
-  color: #aaa;
+.search-form {
+  background-color: #414141!important;
+  color: #ccc!important;
 }
 
-.usermotto {
-  margin-top: 200px;
+.cu-bar.fixed {
+  box-shadow: 0 6.25rpx 12.5rpx rgba(0, 0, 0, 0.16);
 }
+
+.black-bottom {
+  height: 65vh;
+  width: 100%;
+  background-color: #212121;
+  position: fixed;
+  bottom: 0;
+  z-index: -1;
+}
+
+
+.black-bottom::before {
+  content: '';
+  width: 140%;
+  height: 312.5rpx;
+  position: absolute;
+  left: -20%;
+  top: -15%;
+  z-index: -2;
+  border-radius: 100% 100% 0 0;
+  background: #212121;
+}
+
+.card {
+  width: 90%;
+  min-height: 75%;
+  max-height: 75%;
+  height: 75%;
+  background-color: #ffffff;
+  border: solid 3px #212121;
+  margin: 20% 5% 0 5%;
+}
+
+.title-bar {
+  display:inline-block !important;
+  padding: 10rpx 25rpx;
+  background-color: #fff;
+  position: relative;
+  font-size: 25rpx;
+  left: 25rpx;
+  top: -32rpx;
+}
+
+.icon {
+  padding-right: 10rpx;
+}
+
+.booklist {
+  width: 86%;
+  height: 90%;
+  margin: 0 7% 0 7%;
+}
+
+.card-item {
+  color: #212121!important;
+  width: 100% !important;
+  margin: 5% 0!important;
+  padding: 0!important;
+}
+
+.left-top {
+  font-size: 25rpx;
+  margin-right: 15rpx;
+}
+
+.left-bottom {
+  font-size: 25rpx;
+  font-weight: bold;
+  margin-right: 15rpx;
+}
+
+.book-title {
+  font-size: 35rpx;
+}
+

@@ -1,0 +1,125 @@
+/* custom-tab-bar/index.wxss */
+/* pages/common/footer/footer.wxss */
+@import "/theme.wxss";
+@import "/colorui/icon.wxss";
+
+
+.tab-bar {
+    width: 750rpx;
+    height: 100rpx;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    margin-top: 12.5rpx;
+}
+
+.tab-bar .bar {
+    background-color: #fff;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: inline-block;
+    box-shadow: 0 -5rpx 12.5rpx rgba(0, 0, 0, 0.16);
+    margin-top: 12.5rpx;
+}
+
+.tab-bar .bar .menu {
+    width: 20%;
+    height: 100%;
+    text-align: center;
+    float: left;
+}
+
+.circle {
+    width: 125rpx;
+    height: 125rpx;
+    border-radius: 100%;
+    background-color: #fff;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(40%);
+}
+
+.circle-back {
+    z-index: 1;
+    box-shadow: 0 -5rpx 12.5rpx rgba(0, 0, 0, 0.16);
+}
+
+.circle-front {
+    z-index: 3;
+}
+
+/*.plus-button {*/
+    /*z-index: 4;*/
+    /*width: 90rpx;*/
+    /*height: 90rpx;*/
+    /*border-radius: 100%;*/
+    /*position: absolute;*/
+    /*bottom: 50%;*/
+    /*left: 50%;*/
+    /*text-align: center;*/
+    /*background-color: #333;*/
+    /*font-size: 50rpx;*/
+    /*transform: translateX(-50%) translateY(35%);*/
+    /*box-shadow: 0 6.25rpx 12.5rpx rgba(0, 0, 0, 0.58);*/
+/*}*/
+
+.plus-button {
+    z-index: 4;
+    width: 100rpx;
+    height: 80rpx;
+    margin-top: 10rpx;
+    border-radius: 30rpx;
+    text-align: center;
+    background-color: #333;
+    font-size: 50rpx;
+    box-shadow: 0 6.25rpx 12.5rpx rgba(0, 0, 0, 0.58);
+}
+
+.plus-button .span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50rpx;
+    color: #fff;
+}
+
+.menu {
+    opacity: 0.5;
+    color: #212121;
+    filter: grayscale(100%);
+}
+
+.menu-item {
+    width: 50rpx;
+    display: grid;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.menu-item .span {
+    font-size: 45rpx;
+}
+
+.menu-item .text {
+    font-size: 21rpx;
+}
+
+.bar .active {
+    opacity: 1;
+    filter: grayscale(0%);
+}
+
+.PBHover {
+    transform: translateY(5%);
+    box-shadow: none;
+    background-color: rgba(51, 51, 51, 0.753);
+}
+

@@ -1,0 +1,9 @@
+<!--pages/book/book.wxml-->
+<view class="page">
+    <view class="cu-bar search fixed">
+        <view class='search-form round'>
+            <text class="icon cuIcon-search"></text>
+            <input type="text" placeholder="搜索教程" confirm-type="search" bindinput='searchIcon'></input>
+        </view>
+    </view>
+</view>

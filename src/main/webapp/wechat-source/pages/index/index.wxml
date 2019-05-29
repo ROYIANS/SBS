@@ -1,13 +1,117 @@
 <!--index.wxml-->
-<view class="container">
-    <view class="userinfo">
-        <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-        <block wx:else>
-            <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-            <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-        </block>
+<!-- 1 rpx = 0.48 px-->
+<view class="page">
+    <view class="cu-bar search fixed">
+        <view class='search-form round'>
+            <text class="icon cuIcon-search"></text>
+            <input type="text" placeholder="搜索教程" confirm-type="search" bindinput='searchIcon'></input>
+        </view>
     </view>
-    <view class="usermotto">
-        <text class="user-motto">{{motto}}</text>
+    <view class="card">
+        <view class="title-bar">
+            <text class="icon cuIcon-order"></text>
+            <text>按名称排序</text>
+            <text> | </text>
+            <text>按时间排序</text>
+        </view>
+        <scroll-view class="booklist" scroll-y="true">
+            <view bindtap="show" class="flex card-item align-center">
+                <view class="justify-end flex-sub grid col-1">
+                    <text class="left-top">2019.05.30</text>
+                    <text class="left-bottom">ROYIANS</text>
+                </view>
+                <text class="flex-twice book-title text-left">Spring 入门</text>
+                <text class="text-right flex-sub icon cuIcon-right"></text>
+            </view>
+            <view class="flex card-item align-center">
+                <view class="justify-end flex-sub grid col-1">
+                    <text class="left-top">2019.05.30</text>
+                    <text class="left-bottom">ROYIANS</text>
+                </view>
+                <text class="flex-twice book-title text-left">Spring 入门</text>
+                <text class="text-right flex-sub icon cuIcon-right"></text>
+            </view>
+            <view class="flex card-item align-center">
+                <view class="justify-end flex-sub grid col-1">
+                    <text class="left-top">2019.05.30</text>
+                    <text class="left-bottom">ROYIANS</text>
+                </view>
+                <text class="flex-twice book-title text-left">Spring 入门</text>
+                <text class="text-right flex-sub icon cuIcon-right"></text>
+            </view>
+            <view class="flex card-item align-center">
+                <view class="justify-end flex-sub grid col-1">
+                    <text class="left-top">2019.05.30</text>
+                    <text class="left-bottom">ROYIANS</text>
+                </view>
+                <text class="flex-twice book-title text-left">Spring 入门</text>
+                <text class="text-right flex-sub icon cuIcon-right"></text>
+            </view>
+            <view class="flex card-item align-center">
+                <view class="justify-end flex-sub grid col-1">
+                    <text class="left-top">2019.05.30</text>
+                    <text class="left-bottom">ROYIANS</text>
+                </view>
+                <text class="flex-twice book-title text-left">Spring 入门</text>
+                <text class="text-right flex-sub icon cuIcon-right"></text>
+            </view>
+            <view class="flex card-item align-center">
+                <view class="justify-end flex-sub grid col-1">
+                    <text class="left-top">2019.05.30</text>
+                    <text class="left-bottom">ROYIANS</text>
+                </view>
+                <text class="flex-twice book-title text-left">Spring 入门</text>
+                <text class="text-right flex-sub icon cuIcon-right"></text>
+            </view>
+            <view class="flex card-item align-center">
+                <view class="justify-end flex-sub grid col-1">
+                    <text class="left-top">2019.05.30</text>
+                    <text class="left-bottom">ROYIANS</text>
+                </view>
+                <text class="flex-twice book-title text-left">Spring 入门</text>
+                <text class="text-right flex-sub icon cuIcon-right"></text>
+            </view>
+            <view class="flex card-item align-center">
+                <view class="justify-end flex-sub grid col-1">
+                    <text class="left-top">2019.05.30</text>
+                    <text class="left-bottom">ROYIANS</text>
+                </view>
+                <text class="flex-twice book-title text-left">Spring 入门</text>
+                <text class="text-right flex-sub icon cuIcon-right"></text>
+            </view>
+            <view class="flex card-item align-center">
+                <view class="justify-end flex-sub grid col-1">
+                    <text class="left-top">2019.05.30</text>
+                    <text class="left-bottom">ROYIANS</text>
+                </view>
+                <text class="flex-twice book-title text-left">Spring 入门</text>
+                <text class="text-right flex-sub icon cuIcon-right"></text>
+            </view>
+            <view class="flex card-item align-center">
+                <view class="justify-end flex-sub grid col-1">
+                    <text class="left-top">2019.05.30</text>
+                    <text class="left-bottom">ROYIANS</text>
+                </view>
+                <text class="flex-twice book-title text-left">Spring 入门</text>
+                <text class="text-right flex-sub icon cuIcon-right"></text>
+            </view>
+            <view class="flex card-item align-center">
+                <view class="justify-end flex-sub grid col-1">
+                    <text class="left-top">2019.05.30</text>
+                    <text class="left-bottom">ROYIANS</text>
+                </view>
+                <text class="flex-twice book-title text-left">Spring 入门</text>
+                <text class="text-right flex-sub icon cuIcon-right"></text>
+            </view>
+            <view class="flex card-item align-center">
+                <view class="justify-end flex-sub grid col-1">
+                    <text class="left-top">2019.05.30</text>
+                    <text class="left-bottom">ROYIANS</text>
+                </view>
+                <text class="flex-twice book-title text-left">Spring 入门</text>
+                <text class="text-right flex-sub icon cuIcon-right"></text>
+            </view>
+        </scroll-view>
     </view>
+    <view class="black-bottom"></view>
 </view>
