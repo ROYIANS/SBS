@@ -1,2 +1,36 @@
-<!--pages/me/me.wxml-->
-<text>????</text>
+<!--pages/group/group.wxml-->
+<view class="page"></view>
+<view class="black-top">
+<view class="user-name">ROYIANS</view>
+<view class="flex align-center justify-center avatar">
+    <image src="https://img.52z.com/upload/news/image/20181011/20181011092002_29968.jpg"/>
+</view>
+</view>
+
+<view class="card">
+<!--<view class="title-bar">-->
+<!--<text class="icon cuIcon-infofill"></text>-->
+<!--<text class="">警告</text>-->
+<!--</view>-->
+<!--<button class="button">授权登录</button>-->
+<view class="title-bar">
+    <text class="icon cuIcon-settingsfill"></text>
+    <text class="">设置</text>
+</view>
+<scroll-view class="setting-list" scroll-y="true">
+    <view class="flex padding card-item align-center" hover-class='card-item-hover' bindtap="myCourses">
+        <text class="flex-twice setting-title text-left">我发布的教程(5)</text>
+        <text class="text-right flex-sub icon cuIcon-right"></text>
+    </view>
+    <view class="flex padding card-item align-center" hover-class='card-item-hover' bindtap="myBooks">
+        <text class="flex-twice setting-title text-left">我创建的手册(1)</text>
+        <text class="text-right flex-sub icon cuIcon-right"></text>
+    </view>
+    <view class="flex padding card-item align-center" hover-class='card-item-hover'>
+        <text class="flex-twice setting-title text-left">关于我们</text>
+        <text class="text-right flex-sub icon cuIcon-right"></text>
+    </view>
+</scroll-view>
+</view>
+
+

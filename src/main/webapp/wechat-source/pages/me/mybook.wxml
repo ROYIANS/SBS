@@ -15,8 +15,8 @@
             <text bindtap="nameSort" style="color:{{isTap===2?'#212121':'#ccc'}}">按名称排序</text>
         </view>
         <!--<view class="text-center">-->
-            <!--<text class="icon cuIcon-infofill"></text>-->
-            <!--<text>空空如也~</text>-->
+        <!--<text class="icon cuIcon-infofill"></text>-->
+        <!--<text>空空如也~</text>-->
         <!--</view>-->
         <scroll-view class="booklist" scroll-y="true">
             <view class="flex padding card-item align-center" wx:for="{{booklist}}" wx:key wx:if="{{item.isShow}}" hover-class='card-item-hover'>
@@ -30,4 +30,5 @@
         </scroll-view>
     </view>
     <view class="black-bottom"></view>
+    <button class="button"><text class="icon cuIcon-add"></text>新建手册</button>
 </view>

@@ -1,2 +1,51 @@
 <!--pages/group/group.wxml-->
-<text>pages/group/group.wxml</text>
+<view class="page"></view>
+<view class="black-top">
+<view class="group-name">蓝蔷薇之剑</view>
+<view class="flex align-center justify-center avatar">
+    <image src="https://img.52z.com/upload/news/image/20181011/20181011092002_29968.jpg"/>
+</view>
+</view>
+
+<view class="card">
+<view class="title-bar">
+    <text class="icon cuIcon-friendfill"></text>
+    <text class="">团队成员</text>
+</view>
+<!--<view class="text-center">-->
+<!--<text class="icon cuIcon-infofill"></text>-->
+<!--<text>您还没有加入任何团队~</text>-->
+    <!--<button class="button">创建团队</button>-->
+    <!--<button class="button-white" hover-class="button-hover-white">加入团队</button>-->
+<!--</view>-->
+<scroll-view class="grouplist" scroll-y="true">
+    <view class="grid col-2 margin-bottom text-center">
+        <view class="padding group-item flex align-center justify-center" hover-class="group-item-hover">
+            <image src="https://img.52z.com/upload/news/image/20181011/20181011092002_29968.jpg"/>
+            <text>ROYIANS</text>
+        </view>
+        <view class="padding group-item flex align-center justify-center" hover-class="group-item-hover">
+            <image src="https://img.52z.com/upload/news/image/20181011/20181011092002_29968.jpg"/>
+            <text>ROYIANS</text>
+        </view>
+        <view class="padding group-item flex align-center justify-center" hover-class="group-item-hover">
+            <image src="https://img.52z.com/upload/news/image/20181011/20181011092002_29968.jpg"/>
+            <text>ROYIANS</text>
+        </view>
+        <view class="padding group-item flex align-center justify-center" hover-class="group-item-hover">
+            <image src="https://img.52z.com/upload/news/image/20181011/20181011092002_29968.jpg"/>
+            <text>ROYIANS</text>
+        </view>
+        <view class="padding group-item flex align-center justify-center" hover-class="group-item-hover">
+            <image src="https://img.52z.com/upload/news/image/20181011/20181011092002_29968.jpg"/>
+            <text>ROYIANS</text>
+        </view>
+        <view class="padding group-item flex align-center justify-center" hover-class="group-item-hover">
+            <image src="https://img.52z.com/upload/news/image/20181011/20181011092002_29968.jpg"/>
+            <text>ROYIANS</text>
+        </view>
+    </view>
+</scroll-view>
+</view>
+
+<button class="button">退出团队</button>

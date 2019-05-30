@@ -5,13 +5,18 @@
     "pages/index2/index2",
     "pages/book/book",
     "pages/group/group",
-    "pages/me/me"
+    "pages/me/me",
+    "pages/index/detail",
+    "pages/me/mybook",
+    "pages/me/mycourse"
   ],
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#212121",
     "navigationBarTitleText": "Vidorra",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true,
+    "backgroundColor": "#F5F5F5"
   },
   "tabBar": {
     "custom": true,

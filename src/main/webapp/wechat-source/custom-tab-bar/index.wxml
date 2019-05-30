@@ -15,7 +15,7 @@
               data-index="2"
               bindtap="switchTab">
             <view class="menu-item">
-                <view class="span icon cuIcon-discover{{selected === 2 ? 'fill' : ''}}"/>
+                <view class="span icon cuIcon-newshot{{selected === 2 ? 'fill' : ''}}"/>
                 <view class="text">手册</view>
             </view>
         </view>
@@ -30,7 +30,7 @@
               data-index="3"
               bindtap="switchTab">
             <view class="menu-item">
-                <view class="span icon cuIcon-friend{{selected === 3 ? 'fill' : ''}}"/>
+                <view class="span icon cuIcon-group{{selected === 3 ? '_fill' : ''}}"/>
                 <view class="text">团队</view>
             </view>
         </view>

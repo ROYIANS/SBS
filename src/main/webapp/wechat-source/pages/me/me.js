@@ -65,5 +65,17 @@ Page({
      */
     onShareAppMessage: function () {
 
+    },
+
+    myBooks: function () {
+        wx.navigateTo({
+            url: '/pages/me/mybook',
+        })
+    },
+
+    myCourses: function () {
+        wx.navigateTo({
+            url: '/pages/me/mycourse',
+        })
     }
-})
+});

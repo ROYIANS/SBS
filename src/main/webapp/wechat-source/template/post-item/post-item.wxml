@@ -1,0 +1,39 @@
+<template name="post-item">
+  <view class='card-out dayCardColor' hover-class='card-item-hover'>
+    <view class='container'>
+      <view class="card">
+        <view class="title-bar" bindtap='goInto'>
+          <image src="https://img.52z.com/upload/news/image/20181011/20181011092002_29968.jpg"/>
+          <view class="info grid col-1">
+            <text class="left-top">ROYIANS</text>
+            <text class="left-bottom">2019-01-02 11:22</text>
+          </view>
+        </view>
+        <view class="content">
+          <text class="text-control" bindtap='goInto'>{{item['hitokoto']}}{{content}}</text>
+          <view class="grid col-3 flex-sub grid-square">
+            <view class="bg-img" style="background-image:url({{item}});" data-src="{{item}}" wx:for="{{imgalist}}" wx:key="i" bindtap="previewImage"></view>
+          </view>
+          <!--<video src="http://www.w3school.com.cn/i/movie.ogg"></video>-->
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<!--<image class='avatar' src="{{item['avatarUrl']}}" />-->
+<!--<text class='nickname {{nightmode?"darkTextColor":"dayTextColor"}}'>{{item['author']}}{{nickname}}</text>-->
+<!--<text class='bankuai {{nightmode?"darkBKColor":"dayBKColor"}}'>{{item['catname']}}</text>-->
+<!--<view class='grayInfo {{nightmode?"darkInfoColor":"dayInfoColor"}}'>-->
+<!--<text class='time'>{{item['date']}}{{time}}</text>-->
+<!--<text class='id'>No.{{item['id']}}{{postID}}</text>-->
+<!--</view>-->
+<!--<view class='b'>-->
+<!--<text class='tags {{nightmode?"darkHighLight":"dayHighLight"}}'>#格言#{{tags}}</text>-->
+<!--<text class='abstract {{nightmode?"darkTextColor":"dayTextColor"}}'>{{item['hitokoto']}}{{content}}</text>-->
+<!--<text class='comment-left {{nightmode?"darkInfoColor":"dayInfoColor"}}'>{{item['source']}}{{comment}}</text>-->
+<!--<view class='comment-right {{nightmode?"darkInfoColor":"dayInfoColor"}}'>-->
+  <!--<span class="icon cuIcon-comment"></span>-->
+  <!--<text> {{c_num}}</text>-->
+<!--</view>-->
+<!--</view>-->
