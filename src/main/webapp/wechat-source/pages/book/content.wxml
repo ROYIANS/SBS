@@ -1,0 +1,71 @@
+<!--index.wxml-->
+<!-- 1 rpx = 0.48 px-->
+<view class="page">
+
+</view>
+<button class="button-white edit"
+        hover-class="button-hover-white"
+        data-path="/pages/book/add"
+        bindtap="goto">
+<text class="icon cuIcon-post"></text>
+</button>
+<view class="card">
+<view class="title-bar">
+    <text>1.1 Spring 概述</text>
+</view>
+<view class="sbs-content">
+    <text>
+        放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片
+        放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片
+        放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片
+        放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片
+        放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片
+        放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片
+        放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片
+        放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片
+        放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片
+        放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片
+        放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片
+        放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片
+        放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片
+        放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片
+        放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片
+        放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片
+        放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片
+        放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片放字，放图片
+    </text>
+</view>
+</view>
+<view class="black-bottom"></view>
+<view class="footer flex justify-center">
+<view class="container flex flex-wrap justify-center">
+    <view class="basis-xs transparent">
+        <button class="button-white" hover-class="button-hover-white">
+            <text class="icon cuIcon-back"></text>
+        </button>
+    </view>
+    <view class="basis-lg transparent">
+        <button class="button">
+            <text class="icon cuIcon-right"></text>
+        </button>
+    </view>
+    <view class="basis-xs transparent">
+        <button class="button-white" hover-class="button-hover-white" bindtap="showModal" data-target="DrawerModalL">
+            <text class="icon cuIcon-more"></text>
+        </button>
+    </view>
+</view>
+</view>
+
+
+<view class="cu-modal drawer-modal justify-start {{modalName=='DrawerModalL'?'show':''}}" bindtap="hideModal">
+<view class="cu-dialog basis-lg" catchtap style="top:0;height:100vh;)">
+    <view class="cu-list menu text-left">
+        <view class="cu-item arrow" wx:for="{{5}}" wx:key>
+            <view class="content">
+                <view>Item {{index +1}}</view>
+            </view>
+        </view>
+    </view>
+</view>
+</view>

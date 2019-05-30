@@ -67,15 +67,11 @@ Page({
 
     },
 
-    myBooks: function () {
+    goto: function (e) {
+        let data = e.currentTarget.dataset;
+        const url = data.path;
         wx.navigateTo({
-            url: '/pages/me/mybook',
+            url: url,
         })
     },
-
-    myCourses: function () {
-        wx.navigateTo({
-            url: '/pages/me/mycourse',
-        })
-    }
 });

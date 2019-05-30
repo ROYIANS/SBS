@@ -17,7 +17,40 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        this.initItem();
+        let that = this;
+        if(wx.getStorageSync('uid')){
+            wx.checkSession({
+
+                success: function(res){
+                    that.initItem();
+                    console.log("处于登录态");
+
+                },
+
+                fail: function(res){
+
+                    wx.showToast({
+                        title: '登录过期，需要重新登录',
+                        duration: 2000,
+                        success() {
+                            wx.redirectTo({
+                                url: '/pages/us/login'
+                            });
+                        }
+                    });
+
+
+                }
+
+            });
+        } else {
+            wx.redirectTo({
+                url: '/pages/us/login'
+            });
+        }
+
+
+
     },
 
     /**
@@ -151,6 +184,11 @@ Page({
     gotoLogin: function () {
         wx.switchTab({
             url: '/pages/me/me',
+        })
+    },
+    goInto : function () {
+        wx.navigateTo({
+            url: '/pages/index/detail?cid=5',
         })
     }
 });

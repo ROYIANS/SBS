@@ -1,4 +1,5 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "我创建的手册"
+  "navigationBarTitleText": "我创建的手册",
+  "enablePullDownRefresh": false
 }

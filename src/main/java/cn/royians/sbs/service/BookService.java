@@ -26,4 +26,8 @@ public interface BookService {
     JSONObject getBookList(Integer gid) throws Exception;
 
     String realDdel(Integer bid) throws Exception;
+
+    JSONObject getChaAndSecList(Integer bid, Integer zid, Integer sid) throws Exception;
+
+    String getContent(Integer bid, Integer zid, Integer sid) throws Exception;
 }

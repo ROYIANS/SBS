@@ -3,8 +3,10 @@ App({
     onLaunch: function () {
 
     },
+    onShow: function () {
+
+    },
     globalData: {
         userInfo: null,
-        acticeBar: 1,
     }
 });

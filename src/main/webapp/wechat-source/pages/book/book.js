@@ -134,5 +134,10 @@ Page({
     this.setData({
       booklist: list
     })
+  },
+  seeBook: function () {
+    wx.navigateTo({
+      url: '/pages/book/content'
+    })
   }
 });

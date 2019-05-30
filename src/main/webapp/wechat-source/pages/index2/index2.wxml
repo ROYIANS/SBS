@@ -14,7 +14,7 @@
         <view class='content'>授权登录</view>
     </view>
     <view class='padding-xl'>
-        您需要授权登录才能使用本程序。
+        需要您授权登录才能使用本程序。
     </view>
     <view class="cu-bar justify-end">
         <view class='action'>

@@ -187,4 +187,29 @@ public class BookServiceImpl implements BookService {
         bookMapper.deleteByPrimaryKey(bid);
         return "real delete this book.";
     }
+
+    @Override
+    public JSONObject getChaAndSecList(Integer bid,Integer zid, Integer sid) throws Exception {
+        MBook book = bookMapper.selectByPrimaryKey(bid);
+        JSONArray data = JSON.parseObject(book.getbContent()).getJSONArray("data");
+        JSONObject jsonObject = data.getJSONObject(zid -1);
+        JSONArray sectionArray = jsonObject.getJSONArray("section");
+        for (int i = 0; i < sectionArray.size(); i++) {
+            JSONObject section = sectionArray.getJSONObject(i);
+            section.remove("content");
+        }
+        JSONObject newSection = new JSONObject();
+        newSection.put("data", data);
+        return newSection;
+    }
+
+    @Override
+    public String getContent(Integer bid, Integer zid, Integer sid) throws Exception {
+        MBook book = bookMapper.selectByPrimaryKey(bid);
+        JSONArray data = JSON.parseObject(book.getbContent()).getJSONArray("data");
+        JSONObject jsonObject = data.getJSONObject(zid -1);
+        JSONArray sectionArray = jsonObject.getJSONArray("section");
+        return sectionArray.getJSONObject(sid -1).getString("content");
+    }
+
 }

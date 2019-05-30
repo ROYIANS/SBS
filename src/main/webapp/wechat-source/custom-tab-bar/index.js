@@ -19,8 +19,8 @@ Component({
             wx.switchTab({url});
         },
         publish: function () {
-            wx.switchTab({
-                url: '/pages/index2/index2',
+            wx.navigateTo({
+                url: '/pages/course/post',
             })
         },
     }

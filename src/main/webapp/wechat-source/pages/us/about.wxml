@@ -1,0 +1,47 @@
+<!--pages/us/about.wxml-->
+<view class="page"></view>
+
+<view class="card">
+<view class="title-bar">
+    <text class="icon cuIcon-infofill"></text>
+    <text class="">Vidorra是什么</text>
+</view>
+<view class="text-indent flex justify-center padding">
+    Vidorra——安逸的生活。Vidorra主要功能有两方面：一是共享手册。工作的同事或一家人可以创建一个团队，在团队中可以编写自己的手册用于与大家分享自己的想法，当大家不在一起时也可以快速记录，快速分享，传达自己的想法。二是小教程，教程内可以编写文字、插入图片和插入视频，我们现在的想法是小教程主要面向的是年纪稍长的人群，年轻人可以在小教程中上传如何去使用类似家电或APP的教程，长辈可以通过查看小教程来了解如何使用，避免了上网查询繁琐的步骤。
+</view>
+</view>
+
+<view class="card margin-top">
+<view class="title-bar">
+    <text class="icon cuIcon-wefill"></text>
+    <text class="">开发团队</text>
+</view>
+<view class="grid col-1 margin-bottom text-center">
+    <view class="padding group-item flex align-center justify-center" hover-class="group-item-hover">
+        <image src="https://i.loli.net/2019/05/30/5cefe9935809a95669.jpg"/>
+        <text>ROYIANS</text>
+    </view>
+    <view class="padding group-item flex align-center justify-center" hover-class="group-item-hover">
+        <image src="https://i.loli.net/2019/05/30/5cefe7b5f321154281.jpg"/>
+        <text>皮卡丘兵乒乓乒~</text>
+    </view>
+    <view class="padding group-item flex align-center justify-center" hover-class="group-item-hover">
+        <image src="https://i.loli.net/2019/05/30/5cefe7b61072790998.jpg"/>
+        <text>Smter</text>
+    </view>
+</view>
+
+</view>
+
+<view class="card margin-top">
+<view class="title-bar">
+    <text class="icon cuIcon-messagefill"></text>
+    <text class="">联系我们</text>
+</view>
+<view class="flex justify-center padding align-center">
+    <text class="icon cuIcon-mail"></text><text>E-Mail: admin@royians.cn</text>
+</view>
+
+</view>
+
+<view class="loading"></view>

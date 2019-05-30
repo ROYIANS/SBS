@@ -19,7 +19,12 @@
             <!--<text>空空如也~</text>-->
         <!--</view>-->
         <scroll-view class="booklist" scroll-y="true">
-            <view class="flex padding card-item align-center" wx:for="{{booklist}}" wx:key wx:if="{{item.isShow}}" hover-class='card-item-hover'>
+            <view class="flex padding card-item align-center"
+                  wx:for="{{booklist}}"
+                  wx:key
+                  wx:if="{{item.isShow}}"
+                  hover-class='card-item-hover'
+                  bindtap="seeBook">
                 <view class="justify-end flex-sub grid col-1">
                     <text class="left-top">{{item.time}}</text>
                     <text class="left-bottom">{{item.author}}</text>

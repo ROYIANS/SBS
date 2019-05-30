@@ -1,4 +1,5 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "Vidorra - 手册"
+  "navigationBarTitleText": "Vidorra - 手册",
+  "enablePullDownRefresh": false
 }

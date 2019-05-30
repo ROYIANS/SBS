@@ -18,15 +18,24 @@
     <text class="">设置</text>
 </view>
 <scroll-view class="setting-list" scroll-y="true">
-    <view class="flex padding card-item align-center" hover-class='card-item-hover' bindtap="myCourses">
+    <view class="flex padding card-item align-center"
+          hover-class='card-item-hover'
+          data-path="/pages/me/mybook"
+          bindtap="goto">
         <text class="flex-twice setting-title text-left">我发布的教程(5)</text>
         <text class="text-right flex-sub icon cuIcon-right"></text>
     </view>
-    <view class="flex padding card-item align-center" hover-class='card-item-hover' bindtap="myBooks">
+    <view class="flex padding card-item align-center"
+          hover-class='card-item-hover'
+          data-path="/pages/me/mycourse"
+          bindtap="goto">
         <text class="flex-twice setting-title text-left">我创建的手册(1)</text>
         <text class="text-right flex-sub icon cuIcon-right"></text>
     </view>
-    <view class="flex padding card-item align-center" hover-class='card-item-hover'>
+    <view class="flex padding card-item align-center"
+          hover-class='card-item-hover'
+          data-path="/pages/us/about"
+          bindtap="goto">
         <text class="flex-twice setting-title text-left">关于我们</text>
         <text class="text-right flex-sub icon cuIcon-right"></text>
     </view>

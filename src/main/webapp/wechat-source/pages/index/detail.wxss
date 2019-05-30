@@ -37,11 +37,15 @@
 }
 
 .card {
-    height: 80%;
+    min-height: 92vh;
 }
 
 .content {
     width: 86%;
-    height: 90%;
+    min-height: 90%;
     margin: 0 7% 0 7%;
+}
+
+.content .post-img {
+    margin-top: 25rpx;
 }

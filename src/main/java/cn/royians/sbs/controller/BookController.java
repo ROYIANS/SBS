@@ -149,4 +149,26 @@ public class BookController {
         }
     }
 
+    @GetMapping("{bid}/cas")
+    @ResponseBody
+    public Message getChapterList(@PathVariable Integer bid,@RequestParam Integer zid,@RequestParam Integer sid){
+        try{
+            JSONObject data =bookService.getChaAndSecList(bid,zid,sid);
+            return commonService.setSuccessMessage(data);
+        } catch (Exception e) {
+            return commonService.setFailureMessage(e);
+        }
+    }
+
+    @GetMapping("{bid}/{zid}/{sid}")
+    @ResponseBody
+    public Message getContent(@PathVariable Integer bid, @PathVariable Integer zid, @PathVariable Integer sid){
+        try{
+            String data =bookService.getContent(bid,zid,sid);
+            return commonService.setSuccessMessage(data);
+        } catch (Exception e) {
+            return commonService.setFailureMessage(e);
+        }
+    }
+
 }

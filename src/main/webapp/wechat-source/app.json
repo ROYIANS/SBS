@@ -8,7 +8,12 @@
     "pages/me/me",
     "pages/index/detail",
     "pages/me/mybook",
-    "pages/me/mycourse"
+    "pages/me/mycourse",
+    "pages/course/post",
+    "pages/book/add",
+    "pages/us/login",
+    "pages/us/about",
+    "pages/book/content"
   ],
   "window": {
     "backgroundTextStyle": "dark",
