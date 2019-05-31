@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.royians.sbs.mapper.MUserMapper" >
+  <resultMap id="BaseResultMap" type="cn.royians.sbs.pojo.MUser" >
+    <id column="U_ID" property="uId" jdbcType="INTEGER" />
+    <result column="U_OPENID" property="uOpenid" jdbcType="VARCHAR" />
+    <result column="U_GID" property="uGid" jdbcType="INTEGER" />
+    <result column="U_SESSION_KEY" property="uSessionKey" jdbcType="VARCHAR" />
+    <result column="U_3RD_KEY" property="u3rdKey" jdbcType="VARCHAR" />
+    <result column="U_NICKNAME" property="uNickname" jdbcType="VARCHAR" />
+    <result column="U_AVATAR_URL" property="uAvatarUrl" jdbcType="VARCHAR" />
+    <result column="U_CITY" property="uCity" jdbcType="VARCHAR" />
+    <result column="U_LANGUAGE" property="uLanguage" jdbcType="VARCHAR" />
+    <result column="U_REGISTER_TIME" property="uRegisterTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    U_ID, U_OPENID, U_GID, U_SESSION_KEY, U_3RD_KEY, U_NICKNAME, U_AVATAR_URL, U_CITY, 
+    U_LANGUAGE, U_REGISTER_TIME
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.royians.sbs.pojo.MUserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from m_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from m_user
+    where U_ID = #{uId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from m_user
+    where U_ID = #{uId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.royians.sbs.pojo.MUserExample" >
+    delete from m_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.royians.sbs.pojo.MUser" >
+    insert into m_user (U_ID, U_OPENID, U_GID, 
+      U_SESSION_KEY, U_3RD_KEY, U_NICKNAME, 
+      U_AVATAR_URL, U_CITY, U_LANGUAGE, 
+      U_REGISTER_TIME)
+    values (#{uId,jdbcType=INTEGER}, #{uOpenid,jdbcType=VARCHAR}, #{uGid,jdbcType=INTEGER}, 
+      #{uSessionKey,jdbcType=VARCHAR}, #{u3rdKey,jdbcType=VARCHAR}, #{uNickname,jdbcType=VARCHAR}, 
+      #{uAvatarUrl,jdbcType=VARCHAR}, #{uCity,jdbcType=VARCHAR}, #{uLanguage,jdbcType=VARCHAR}, 
+      #{uRegisterTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.royians.sbs.pojo.MUser" >
+    insert into m_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uId != null" >
+        U_ID,
+      </if>
+      <if test="uOpenid != null" >
+        U_OPENID,
+      </if>
+      <if test="uGid != null" >
+        U_GID,
+      </if>
+      <if test="uSessionKey != null" >
+        U_SESSION_KEY,
+      </if>
+      <if test="u3rdKey != null" >
+        U_3RD_KEY,
+      </if>
+      <if test="uNickname != null" >
+        U_NICKNAME,
+      </if>
+      <if test="uAvatarUrl != null" >
+        U_AVATAR_URL,
+      </if>
+      <if test="uCity != null" >
+        U_CITY,
+      </if>
+      <if test="uLanguage != null" >
+        U_LANGUAGE,
+      </if>
+      <if test="uRegisterTime != null" >
+        U_REGISTER_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uId != null" >
+        #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="uOpenid != null" >
+        #{uOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="uGid != null" >
+        #{uGid,jdbcType=INTEGER},
+      </if>
+      <if test="uSessionKey != null" >
+        #{uSessionKey,jdbcType=VARCHAR},
+      </if>
+      <if test="u3rdKey != null" >
+        #{u3rdKey,jdbcType=VARCHAR},
+      </if>
+      <if test="uNickname != null" >
+        #{uNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="uAvatarUrl != null" >
+        #{uAvatarUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="uCity != null" >
+        #{uCity,jdbcType=VARCHAR},
+      </if>
+      <if test="uLanguage != null" >
+        #{uLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="uRegisterTime != null" >
+        #{uRegisterTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.royians.sbs.pojo.MUserExample" resultType="java.lang.Integer" >
+    select count(*) from m_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update m_user
+    <set >
+      <if test="record.uId != null" >
+        U_ID = #{record.uId,jdbcType=INTEGER},
+      </if>
+      <if test="record.uOpenid != null" >
+        U_OPENID = #{record.uOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uGid != null" >
+        U_GID = #{record.uGid,jdbcType=INTEGER},
+      </if>
+      <if test="record.uSessionKey != null" >
+        U_SESSION_KEY = #{record.uSessionKey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.u3rdKey != null" >
+        U_3RD_KEY = #{record.u3rdKey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uNickname != null" >
+        U_NICKNAME = #{record.uNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uAvatarUrl != null" >
+        U_AVATAR_URL = #{record.uAvatarUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uCity != null" >
+        U_CITY = #{record.uCity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uLanguage != null" >
+        U_LANGUAGE = #{record.uLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uRegisterTime != null" >
+        U_REGISTER_TIME = #{record.uRegisterTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update m_user
+    set U_ID = #{record.uId,jdbcType=INTEGER},
+      U_OPENID = #{record.uOpenid,jdbcType=VARCHAR},
+      U_GID = #{record.uGid,jdbcType=INTEGER},
+      U_SESSION_KEY = #{record.uSessionKey,jdbcType=VARCHAR},
+      U_3RD_KEY = #{record.u3rdKey,jdbcType=VARCHAR},
+      U_NICKNAME = #{record.uNickname,jdbcType=VARCHAR},
+      U_AVATAR_URL = #{record.uAvatarUrl,jdbcType=VARCHAR},
+      U_CITY = #{record.uCity,jdbcType=VARCHAR},
+      U_LANGUAGE = #{record.uLanguage,jdbcType=VARCHAR},
+      U_REGISTER_TIME = #{record.uRegisterTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.royians.sbs.pojo.MUser" >
+    update m_user
+    <set >
+      <if test="uOpenid != null" >
+        U_OPENID = #{uOpenid,jdbcType=VARCHAR},
+      </if>
+      <if test="uGid != null" >
+        U_GID = #{uGid,jdbcType=INTEGER},
+      </if>
+      <if test="uSessionKey != null" >
+        U_SESSION_KEY = #{uSessionKey,jdbcType=VARCHAR},
+      </if>
+      <if test="u3rdKey != null" >
+        U_3RD_KEY = #{u3rdKey,jdbcType=VARCHAR},
+      </if>
+      <if test="uNickname != null" >
+        U_NICKNAME = #{uNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="uAvatarUrl != null" >
+        U_AVATAR_URL = #{uAvatarUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="uCity != null" >
+        U_CITY = #{uCity,jdbcType=VARCHAR},
+      </if>
+      <if test="uLanguage != null" >
+        U_LANGUAGE = #{uLanguage,jdbcType=VARCHAR},
+      </if>
+      <if test="uRegisterTime != null" >
+        U_REGISTER_TIME = #{uRegisterTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where U_ID = #{uId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.royians.sbs.pojo.MUser" >
+    update m_user
+    set U_OPENID = #{uOpenid,jdbcType=VARCHAR},
+      U_GID = #{uGid,jdbcType=INTEGER},
+      U_SESSION_KEY = #{uSessionKey,jdbcType=VARCHAR},
+      U_3RD_KEY = #{u3rdKey,jdbcType=VARCHAR},
+      U_NICKNAME = #{uNickname,jdbcType=VARCHAR},
+      U_AVATAR_URL = #{uAvatarUrl,jdbcType=VARCHAR},
+      U_CITY = #{uCity,jdbcType=VARCHAR},
+      U_LANGUAGE = #{uLanguage,jdbcType=VARCHAR},
+      U_REGISTER_TIME = #{uRegisterTime,jdbcType=TIMESTAMP}
+    where U_ID = #{uId,jdbcType=INTEGER}
+  </update>
+</mapper>

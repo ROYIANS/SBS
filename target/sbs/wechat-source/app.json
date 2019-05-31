@@ -1,0 +1,55 @@
+{
+  "pages": [
+    "pages/index/index",
+    "custom-tab-bar/index",
+    "pages/index2/index2",
+    "pages/book/book",
+    "pages/group/group",
+    "pages/me/me",
+    "pages/index/detail",
+    "pages/me/mybook",
+    "pages/me/mycourse",
+    "pages/course/post",
+    "pages/book/add",
+    "pages/us/login",
+    "pages/us/about",
+    "pages/book/content",
+    "pages/book/new",
+    "pages/group/info",
+    "pages/group/add"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#212121",
+    "navigationBarTitleText": "Vidorra",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true,
+    "backgroundColor": "#F5F5F5"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#000000",
+    "selectedColor": "#000000",
+    "backgroundColor": "#000000",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "教程"
+      },
+      {
+        "pagePath": "pages/book/book",
+        "text": "手册"
+      },
+      {
+        "pagePath": "pages/group/group",
+        "text": "团队"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,25 @@
+<!--pages/group/group.wxml-->
+<view class="page"></view>
+<import src ="/template/post-item/post-item.wxml"/>
+<template is="post-item" wx:for="{{listData}}" wx:key="" data="{{item,imgalist}}"/>
+<view class="cu-load bg-gray {{!isLoad?'loading':'over'}}"></view>
+<view class="loading-text">
+
+</view>
+
+
+<view class="cu-modal show">
+<view class="cu-dialog">
+    <view class="cu-bar justify-end">
+        <view class='content'>授权登录</view>
+    </view>
+    <view class='padding-xl'>
+        需要您授权登录才能使用本程序。
+    </view>
+    <view class="cu-bar justify-end">
+        <view class='action'>
+            <button class='cu-btn bg-green margin-left' bindtap='gotoLogin'>去登录</button>
+        </view>
+    </view>
+</view>
+</view>

@@ -1,0 +1,66 @@
+<!--pages/group/group.wxml-->
+<view class="page"></view>
+<view class="black-top">
+<view class="group-name">{{data.name}}</view>
+<view class="flex align-center justify-center avatar" bindtap="goto" data-path="/pages/group/info">
+    <image src="{{data.avatarUrl}}"/>
+</view>
+</view>
+
+<view class="card" wx:if="{{gid!=1 && gid!=null}}">
+<view class="title-bar">
+    <text class="icon cuIcon-friendfill"></text>
+    <text class="" style="color:{{isTap==='1'?'#212121':'#ccc'}}" data-tap="1" bindtap="tapIT">团队成员</text>
+    <text class=""> | </text>
+    <text class="icon cuIcon-qrcode"></text>
+    <text class="" style="color:{{isTap==='2'?'#212121':'#ccc'}}" data-tap="2" bindtap="tapIT">邀请码</text>
+</view>
+<scroll-view class="grouplist" scroll-y="true" wx:if="{{isTap==='1'}}">
+    <view class="grid col-2 margin-bottom text-center">
+        <view class="padding group-item flex align-center justify-center" hover-class="group-item-hover">
+            <image src="https://img.52z.com/upload/news/image/20181011/20181011092002_29968.jpg"/>
+            <text>ROYIANS</text>
+        </view>
+        <view class="padding group-item flex align-center justify-center" hover-class="group-item-hover">
+            <image src="https://img.52z.com/upload/news/image/20181011/20181011092002_29968.jpg"/>
+            <text>ROYIANS</text>
+        </view>
+        <view class="padding group-item flex align-center justify-center" hover-class="group-item-hover">
+            <image src="https://img.52z.com/upload/news/image/20181011/20181011092002_29968.jpg"/>
+            <text>ROYIANS</text>
+        </view>
+        <view class="padding group-item flex align-center justify-center" hover-class="group-item-hover">
+            <image src="https://img.52z.com/upload/news/image/20181011/20181011092002_29968.jpg"/>
+            <text>ROYIANS</text>
+        </view>
+        <view class="padding group-item flex align-center justify-center" hover-class="group-item-hover">
+            <image src="https://img.52z.com/upload/news/image/20181011/20181011092002_29968.jpg"/>
+            <text>ROYIANS</text>
+        </view>
+        <view class="padding group-item flex align-center justify-center" hover-class="group-item-hover">
+            <image src="https://img.52z.com/upload/news/image/20181011/20181011092002_29968.jpg"/>
+            <text>ROYIANS</text>
+        </view>
+    </view>
+</scroll-view>
+<view wx:if="{{isTap==='2'}}" class="image-box flex justify-center">
+    <image src="https://api.imjad.cn/qrcode/?text=jscode"></image>
+</view>
+</view>
+
+
+<view class="card" wx:if="{{gid==1 || gid==null}}">
+<view class="title-bar">
+    <text class="icon cuIcon-info"></text>
+    <text class="" >提示</text>
+</view>
+<view class="text-center">
+<text class="icon cuIcon-infofill"></text>
+<text>您还没有加入任何团队~</text>
+<button class="button" bindtap="goto" data-path="/pages/group/add">创建团队</button>
+<button class="button-white" hover-class="button-hover-white" bindtap="getScancode">扫码加入团队</button>
+</view>
+</view>
+
+<button class="button" bindtap="getScancode" wx:if="{{gid!=1 && gid!=null}}">退出团队</button>
+

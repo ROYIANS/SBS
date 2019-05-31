@@ -1,0 +1,41 @@
+<template name="post-item">
+  <view class='card-out dayCardColor' hover-class='card-item-hover'>
+    <view class='container'>
+      <view class="card">
+        <view class="title-bar" data-cid="{{item.cid}}" bindtap='goInto'>
+          <image src="{{item['userInfo'].avatarUrl}}"/>
+          <view class="info grid col-1">
+            <text class="left-top">{{item['userInfo'].nickname}}</text>
+            <text class="left-bottom">{{item['time']}}</text>
+          </view>
+        </view>
+        <view class="content">
+          <text class="text-control" data-cid="{{item.cid}}" bindtap='goInto'>{{item['content'].content}}</text>
+          <view class="grid col-3 flex-sub grid-square"  wx:if="{{item['imgUrls']}}">
+            <view class="bg-img" style="background-image:url({{img}});" data-index="{{item.cid}}" data-src="{{img}}" wx:for="{{item['imgUrls']}}" wx:for-item="img" wx:key="index" bindtap="previewImage">
+            </view>
+          </view>
+
+          <video src="{{item['vidUrl']}}" wx:if="{{item['vidUrl']}}"></video>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<!--<image class='avatar' src="{{item['avatarUrl']}}" />-->
+<!--<text class='nickname {{nightmode?"darkTextColor":"dayTextColor"}}'>{{item['author']}}{{nickname}}</text>-->
+<!--<text class='bankuai {{nightmode?"darkBKColor":"dayBKColor"}}'>{{item['catname']}}</text>-->
+<!--<view class='grayInfo {{nightmode?"darkInfoColor":"dayInfoColor"}}'>-->
+<!--<text class='time'>{{item['date']}}{{time}}</text>-->
+<!--<text class='id'>No.{{item['id']}}{{postID}}</text>-->
+<!--</view>-->
+<!--<view class='b'>-->
+<!--<text class='tags {{nightmode?"darkHighLight":"dayHighLight"}}'>#格言#{{tags}}</text>-->
+<!--<text class='abstract {{nightmode?"darkTextColor":"dayTextColor"}}'>{{item['hitokoto']}}{{content}}</text>-->
+<!--<text class='comment-left {{nightmode?"darkInfoColor":"dayInfoColor"}}'>{{item['source']}}{{comment}}</text>-->
+<!--<view class='comment-right {{nightmode?"darkInfoColor":"dayInfoColor"}}'>-->
+  <!--<span class="icon cuIcon-comment"></span>-->
+  <!--<text> {{c_num}}</text>-->
+<!--</view>-->
+<!--</view>-->

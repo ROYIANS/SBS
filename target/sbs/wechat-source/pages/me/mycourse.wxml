@@ -1,0 +1,10 @@
+<!--pages/group/group.wxml-->
+<view class="page"></view>
+<import src="/template/post-item/post-item.wxml"/>
+
+<template is="post-item" wx:for="{{courses}}" wx:key="cid" data="{{item}}" wx:if="{{courses.length!==0}}"/>
+<view class="loading-text flex justify-center align-center" wx:if="{{courses.length===0}}">
+    <text class="icon cuIcon-infofill"></text>
+    <text>空空如也~</text>
+</view>
+<view class="cu-load bg-gray {{isLoad?'loading':'over'}}"></view>
