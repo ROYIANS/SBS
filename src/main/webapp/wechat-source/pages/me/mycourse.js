@@ -6,11 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imgalist:[
-      'https://image.weilanwl.com/img/square-1.jpg',
-      'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=76488821,1544190324&fm=26&gp=0.jpg',
-      'https://image.weilanwl.com/img/square-1.jpg'
-    ],
+    courses: [],
+    imgList: [],
   },
 
   /**
@@ -31,13 +28,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (typeof this.getTabBar === 'function' &&
-        this.getTabBar()) {
-      this.getTabBar().setData({
-        selected: 1
-      });
-      console.log(this.getTabBar().data.selected);
-    }
+
   },
 
   /**
@@ -84,73 +75,89 @@ Page({
   },
 
   initItem: function() {
-    let _this = this;
-    _this.setData({
-      title: "加载中...",
-      isLoad: false,
-      listData: []
+    let that = this;
+    that.setData({
+      isLoad: true,
+      courses: []
     });
-    for (let i = 0; i <= 5; i++) {
-      wx.request({
-        url: 'https://api.imjad.cn/hitokoto/?encode=json',
-        //json数据地址
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        success: function(res) {
-          let listData = _this.data.listData;
-          res.data["avatarUrl"] = "https://img.52z.com/upload/news/image/20181011/20181011092002_29968.jpg";
-          listData.push(res.data);
-          _this.setData({
-            listData: listData
-          })
+    wx.request({
+      url: 'http://localhost:8080/api/user/course/'+wx.getStorageSync("uid"),
+      header: {
+        'content-type': 'application/json'
+      },
+      data: {
+        t: new Date()
+      },
+      success: function(res) {
+        let data = res.data.data;
+
+        if(data.courses.length<15){
+          that.setData({
+            isLoad: false
+          });
         }
-      })
-    }
+        that.setData({
+          courses: data.courses
+        });
+        console.log(res.data.data.courses)
+      },
+      fail(res) {
+        console.log(res)
+      }
+    });
   },
   previewImage: function (e) {
     let current=e.target.dataset.src;
+    let index = e.target.dataset.index;
+    let list = [];
+    let imgUrls = this.data.courses[index-1]['imgUrls'];
+    for(let key in imgUrls){
+      list.push(imgUrls[key]);
+    }
+    this.setData({
+      imgList: list
+    });
     wx.previewImage({
       current: current, // 当前显示图片的http链接
-      urls: this.data.imgalist // 需要预览的图片http链接列表
+      urls: this.data.imgList // 需要预览的图片http链接列表
     })
   },
   loadmore: function() {
     let _this = this;
     _this.setData({
-      title: "加载中...",
-      isLoad: false,
+      isLoad: true,
     });
     setTimeout(function() {
       for (let i = 0; i <= 5; i++) {
         if (_this.data.listData.length > 50) {
           _this.setData({
-            title: "- 我是有底线的 -",
-            isLoad: true,
+            isLoad: false,
           });
           break;
         }
         wx.request({
-          url: 'https://api.imjad.cn/hitokoto/?encode=json',
+          url: 'http://localhost:8080/api/user/course/'+wx.getStorageSync("uid"),
           //json数据地址
+          data: {
+            t: new Date()
+          },
           headers: {
             'Content-Type': 'application/json'
           },
           success: function(res) {
-            let listData = _this.data.listData;
-            res.data["avatarUrl"] = "https://img.52z.com/upload/news/image/20181011/20181011092002_29968.jpg";
-            listData.push(res.data);
+            let listData = _this.data.courses;
+            listData.push(res.data.data.courses);
             _this.setData({
-              listData: listData
+              courses: listData
             })
           }
         })
       }
     }, 1000)
   },
-  goInto : function () {
+  goInto : function (e) {
     wx.navigateTo({
-      url: '/pages/index/detail?cid=5',
+      url: '/pages/index/detail?cid='+e.target.dataset.cid,
     })
   }
 });

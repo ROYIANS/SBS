@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -74,7 +75,7 @@ public class UserController {
 
     @GetMapping("/course/{uid}")
     @ResponseBody
-    public Message getUserCourses(@PathVariable Integer uid){
+    public Message getUserCourses(@PathVariable Integer uid, @RequestParam String t){
         try {
             JSONObject data = userService.getCoursesOfUID(uid);
             return commonService.setSuccessMessage(data);

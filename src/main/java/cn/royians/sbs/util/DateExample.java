@@ -5,12 +5,10 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class DateExample {
-    public String stampToDateString(String s){
+    public String stampToDateString(Date s){
         String res;
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        long lt = new Long(s);
-        Date date = new Date(lt);
-        res = simpleDateFormat.format(date);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        res = simpleDateFormat.format(s);
         return res;
     }
 

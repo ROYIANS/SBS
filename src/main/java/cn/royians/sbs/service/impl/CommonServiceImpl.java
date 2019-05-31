@@ -7,6 +7,7 @@ import cn.royians.sbs.mapper.MUserMapper;
 import cn.royians.sbs.pojo.*;
 import cn.royians.sbs.service.CommonService;
 import cn.royians.sbs.util.DateExample;
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -84,10 +85,11 @@ public class CommonServiceImpl implements CommonService {
         JSONObject userInfo = this.getUserInfoByUID(course.getcUid());
         DateExample dateExample = new DateExample();
         String s = dateExample.dateToWord(course.getcCreateTime());
+        jsonObject.put("cid", course.getcId());
         jsonObject.put("userInfo", userInfo);
-        jsonObject.put("content", course.getcContent());
-        jsonObject.put("imgUrls", course.getcImgUrls());
-        jsonObject.put("vidUrl", course.getcVidUrl());
+        jsonObject.put("content", JSON.parse(course.getcContent()));
+        jsonObject.put("imgUrls", JSON.parse(course.getcImgUrls()));
+        jsonObject.put("vidUrl", JSON.parse(course.getcVidUrl()));
         jsonObject.put("time", s);
         return jsonObject;
     }
@@ -122,6 +124,7 @@ public class CommonServiceImpl implements CommonService {
     public List<JSONObject> getBooksByUIDOrGID(Integer id, String idType) throws Exception {
         MBookExample bookExample = new MBookExample();
         MBookExample.Criteria criteria = bookExample.createCriteria();
+        DateExample dateExample = new DateExample();
         criteria.andBIsDelEqualTo(false);
         if (idType.equals("uid")){
             criteria.andBUidEqualTo(id);
@@ -135,12 +138,12 @@ public class CommonServiceImpl implements CommonService {
             if (!book.getbIsDel()) {
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("bid", book.getbId());
-                jsonObject.put("uid", book.getbUid());
+                jsonObject.put("uiserInfo", this.getUserInfoByUID(book.getbUid()));
                 jsonObject.put("gid", book.getbGid());
                 jsonObject.put("title", book.getbTitle());
                 jsonObject.put("description", book.getbDescription());
-                jsonObject.put("create_time", book.getbCreateTime());
-                jsonObject.put("update_time", book.getbUpdateTime());
+                jsonObject.put("create_time", dateExample.stampToDateString(book.getbCreateTime()));
+                jsonObject.put("update_time", dateExample.stampToDateString(book.getbUpdateTime()));
                 jsonObjectList.add(jsonObject);
             }
         }

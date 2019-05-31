@@ -5,6 +5,7 @@ import cn.royians.sbs.pojo.*;
 import cn.royians.sbs.service.*;
 import cn.royians.sbs.util.HttpClientExample;
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -99,9 +100,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public JSONObject getCoursesOfUID(Integer uid) throws Exception {
         JSONObject data = new JSONObject();
-        List<MCourse> courseList = commonService.getCoursesByUID(uid);
+        List<MCourse> courses = commonService.getCoursesByUID(uid);
+        JSONArray array = new JSONArray();
+        for(MCourse course:courses) {
+            JSONObject courseInfo = commonService.getCourseInfoByCID(course.getcId());
+            array.add(courseInfo);
+        }
         data.put("uid", uid);
-        data.put("books", courseList);
+        data.put("courses", array);
         return data;
     }
 }

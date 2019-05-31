@@ -1,9 +1,9 @@
 <!--pages/group/group.wxml-->
 <view class="page"></view>
 <import src="/template/post-item/post-item.wxml"/>
-<template is="post-item" wx:for="{{listData}}" wx:key="" data="{{item,imgalist}}"/>
+<template is="post-item" wx:for="{{courses}}" wx:key="cid" data="{{item}}"/>
 <!--<view class="loading-text flex justify-center align-center">-->
     <!--<text class="icon cuIcon-infofill"></text>-->
     <!--<text>空空如也~</text>-->
 <!--</view>-->
-<view class="cu-load bg-gray {{!isLoad?'loading':'over'}}"></view>
+<view class="cu-load bg-gray {{isLoad?'loading':'over'}}"></view>

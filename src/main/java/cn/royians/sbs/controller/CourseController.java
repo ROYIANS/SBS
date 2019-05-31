@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -31,6 +32,18 @@ public class CourseController {
     public Message post(@RequestParam Integer uid, @RequestParam String content, @RequestParam String vidUrl, @RequestParam String imgUrls) {
         try {
             String data = courseService.post(uid, content, imgUrls, vidUrl);
+            return commonService.setSuccessMessage(data);
+        }
+        catch (Exception e) {
+            return commonService.setFailureMessage(e);
+        }
+    }
+
+    @GetMapping("{cid}")
+    @ResponseBody
+    public Message get(@PathVariable Integer cid){
+        try {
+            JSONObject data = commonService.getCourseInfoByCID(cid);
             return commonService.setSuccessMessage(data);
         }
         catch (Exception e) {
@@ -64,7 +77,7 @@ public class CourseController {
 
     @GetMapping("/list")
     @ResponseBody
-    public Message list(@RequestParam Integer gid) {
+    public Message list(@RequestParam Integer gid, @RequestParam String t) {
         try {
             JSONArray data = courseService.list(gid);
             return commonService.setSuccessMessage(data);

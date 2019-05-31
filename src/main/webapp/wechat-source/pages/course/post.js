@@ -118,4 +118,39 @@ Page({
       textareaValue: e.detail.value
     })
   },
+  formSubmit: function(e) {
+    let that = this;
+    console.log('form发生了submit事件，携带数据为：', e.detail.value);
+    console.log(this.data.imgList);
+    wx.uploadFile({
+      url: 'https://sm.ms/api/upload',
+      filePath: that.data.imgList[0],
+      name: 'smfile',
+      success: res => {
+        console.log('上传成功：', res.data);
+      }
+    });
+  },
+  test : function () {
+    wx.chooseImage({
+      success (res) {
+        const tempFilePaths = res.tempFilePaths;
+        wx.uploadFile({
+          url: 'https://sm.ms/api/upload', //仅为示例，非真实的接口地址
+          filePath: tempFilePaths[0],
+          name: 'file',
+          success (res){
+            const data = res.data;
+            console.log(data)
+            //do something
+          },
+          fail(res) {
+            console.log(res);
+            console.log(filePath);
+            console.log(that.data.imgList[0]);
+          }
+        })
+      }
+    })
+  }
 });

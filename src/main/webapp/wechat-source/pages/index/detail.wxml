@@ -5,18 +5,18 @@
 </view>
 <view class="card">
 <view class="title-bar">
-    <image src="https://img.52z.com/upload/news/image/20181011/20181011092002_29968.jpg"/>
+    <image src="{{content['userInfo'].avatarUrl}}"/>
     <view class="info grid col-1">
-        <text class="left-top">ROYIANS{{cid}}</text>
-        <text class="left-bottom">2019-01-02 11:22</text>
+        <text class="left-top">{{content.userInfo.nickname}}</text>
+        <text class="left-bottom">{{content.time}}</text>
     </view>
 </view>
 <view class="content">
-    <text>n</text>
+    <text class="text-control" data-cid="{{content.cid}}" bindtap='goInto'>{{content.content.content}}</text>
     <view class="post-img grid col-3 flex-sub grid-square">
-        <view class="bg-img" style="background-image:url({{item}});" data-src="{{item}}" wx:for="{{imgalist}}" wx:key="i" bindtap="previewImage"></view>
+        <view class="bg-img" style="background-image:url({{img}});" data-index="{{content.cid}}" data-src="{{img}}" wx:for="{{content['imgUrls']}}" wx:for-item="img" wx:key="index" bindtap="previewImage"></view>
     </view>
-    <!--<video src="http://www.w3school.com.cn/i/movie.ogg"></video>-->
+    <!--<video src="{{item}}" wx:for="{{item['vidUrl']}}" wx:key="*this"></video>-->
 </view>
 </view>
 <view class="black-bottom"></view>

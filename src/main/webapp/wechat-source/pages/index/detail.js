@@ -5,18 +5,31 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imgalist:[
-      'https://image.weilanwl.com/img/square-1.jpg',
-      'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=76488821,1544190324&fm=26&gp=0.jpg',
-      'https://image.weilanwl.com/img/square-1.jpg'
-    ],
+    content: null,
+    imgList: [],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let that = this;
+    wx.request({
+      url: 'http://localhost:8080/api/course/'+ options.cid,
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function(res) {
+        let data = res.data.data;
+        that.setData({
+          content: data
+        });
+        console.log(res.data.data)
+      },
+      fail(res) {
+        console.log(res)
+      }
+    });
   },
 
   /**
@@ -69,9 +82,18 @@ Page({
   },
   previewImage: function (e) {
     let current=e.target.dataset.src;
+    let index = e.target.dataset.index;
+    let list = [];
+    let imgUrls = this.data.content['imgUrls'];
+    for(let key in imgUrls){
+      list.push(imgUrls[key]);
+    }
+    this.setData({
+      imgList: list
+    });
     wx.previewImage({
       current: current, // 当前显示图片的http链接
-      urls: this.data.imgalist // 需要预览的图片http链接列表
+      urls: this.data.imgList // 需要预览的图片http链接列表
     })
   },
 });
