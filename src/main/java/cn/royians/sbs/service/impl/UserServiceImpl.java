@@ -32,8 +32,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public MUser registerOrLogin(String JSCODE) throws Exception {
         try {
-            String APPID = "wxbfbe8ed998b8c233";
-            String SECRET = "d8cb8e071ed73f8b135d5850a8337aa1";
+            String APPID = "******";
+            String SECRET = "******";
             String url = "https://api.weixin.qq.com/sns/jscode2session?appid=" + APPID + "&secret=" + SECRET + "&js_code=" + JSCODE + "&grant_type=authorization_code";
             HttpClientExample http = new HttpClientExample();
             JSONObject jsonObject = http.sendGet(url);
