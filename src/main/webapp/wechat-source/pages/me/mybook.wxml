@@ -30,5 +30,7 @@
         </scroll-view>
     </view>
     <view class="black-bottom"></view>
-    <button class="button"><text class="icon cuIcon-add"></text>新建手册</button>
+    <button class="button"
+            data-path="/pages/book/new"
+            bindtap="goto"><text class="icon cuIcon-add"></text>新建手册</button>
 </view>

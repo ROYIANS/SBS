@@ -1,14 +1,11 @@
-// pages/course/post.js
+// pages/group/info.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    cindex: null,
-    sindex: null,
-    picker: ['第一章','第二章','新建章'],
-    pickerSection: ['第一节','第二节','新建节'],
+
   },
 
   /**
@@ -65,19 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  PickercChange(e) {
-    console.log(e);
-    console.log(this.data.index);
-    this.setData({
-      cindex: e.detail.value
-    })
-  },
-  PickersChange(e) {
-    console.log(e);
-    console.log(this.data.index);
-    this.setData({
-      sindex: e.detail.value
-    })
-  },
+  }
 });

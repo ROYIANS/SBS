@@ -39,13 +39,13 @@
 <view class="black-bottom"></view>
 <view class="footer flex justify-center">
 <view class="container flex flex-wrap justify-center">
-    <view class="basis-xs transparent">
+    <view class="basis-xs transparent" bindtap="prev">
         <button class="button-white" hover-class="button-hover-white">
             <text class="icon cuIcon-back"></text>
         </button>
     </view>
     <view class="basis-lg transparent">
-        <button class="button">
+        <button class="button" bindtap="next">
             <text class="icon cuIcon-right"></text>
         </button>
     </view>
@@ -59,13 +59,23 @@
 
 
 <view class="cu-modal drawer-modal justify-start {{modalName=='DrawerModalL'?'show':''}}" bindtap="hideModal">
-<view class="cu-dialog basis-lg" catchtap style="top:0;height:100vh;)">
+<scroll-view class="cu-dialog basis-lg" catchtap="hold" style="top:0;height:100vh;)" scroll-y="true">
     <view class="cu-list menu text-left">
-        <view class="cu-item arrow" wx:for="{{5}}" wx:key>
-            <view class="content">
-                <view>Item {{index +1}}</view>
+        <block wx:for="{{3}}" wx:key="unique">
+            <view class="cu-item" bindtap='changeToggle' data-index="{{index}}">
+                <view class="content">
+                    <view>Item {{index +1}}</view>
+                </view>
+                <text class="icon {{selectedFlag[index]?'cuIcon-fold':'cuIcon-unfold'}}"></text>
             </view>
-        </view>
+            <view hidden="{{!selectedFlag[index]}}">
+                <view class="padding bg-gray" wx:for="{{4}}" wx:key="unique">
+                    <view class="content">
+                        <view>Item {{index +1}}</view>
+                    </view>
+                </view>
+            </view>
+        </block>
     </view>
-</view>
+</scroll-view>
 </view>

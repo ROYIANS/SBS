@@ -13,7 +13,10 @@
     "pages/book/add",
     "pages/us/login",
     "pages/us/about",
-    "pages/book/content"
+    "pages/book/content",
+    "pages/book/new",
+    "pages/group/info",
+    "pages/group/add"
   ],
   "window": {
     "backgroundTextStyle": "dark",

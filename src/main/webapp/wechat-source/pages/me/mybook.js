@@ -176,5 +176,12 @@ Page({
     this.setData({
       booklist: list
     })
-  }
+  },
+  goto: function (e) {
+    let data = e.currentTarget.dataset;
+    const url = data.path;
+    wx.navigateTo({
+      url: url,
+    })
+  },
 });

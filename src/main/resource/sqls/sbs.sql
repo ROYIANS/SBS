@@ -1,5 +1,5 @@
 create schema sbs collate utf8_general_ci;
-use sbs;
+
 create table m_group
 (
   G_ID int auto_increment,
@@ -17,15 +17,16 @@ alter table m_group
 
 insert into m_group (G_NAME, G_AVATARURL, G_REGISTER_TIME, G_INVITE_CODE, G_ANDMIN) VALUES ('未加入家庭','null',now(),'null',null);
 
+
 create table m_user
 (
   U_ID int auto_increment,
   U_OPENID varchar(100) not null,
-  U_GID int default 1 null,
+  U_GID int null,
   U_SESSION_KEY varchar(200) not null,
-  U_3RD_KEY varchar(200) not null,
-  U_NICKNAME varchar(100) not null,
-  U_AVATAR_URL varchar(200) not null,
+  U_3RD_KEY varchar(200) null,
+  U_NICKNAME varchar(100) null,
+  U_AVATAR_URL varchar(200) null,
   U_CITY varchar(40) null,
   U_LANGUAGE varchar(40) null,
   U_REGISTER_TIME datetime not null,
@@ -43,7 +44,6 @@ create table m_user
 
 insert into m_user (U_OPENID, U_GID, U_SESSION_KEY, U_3RD_KEY, U_NICKNAME, U_AVATAR_URL, U_CITY, U_LANGUAGE, U_REGISTER_TIME) VALUES ('null',1,'null','null','admin','null','null','null',now());
 update m_group set G_ANDMIN = 1 where G_ID = 1;
-
 
 create table m_book
 (
@@ -91,4 +91,5 @@ alter table m_group
 
 alter table m_user
   add primary key (U_ID);
+
 

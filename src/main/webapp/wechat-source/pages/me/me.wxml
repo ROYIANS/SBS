@@ -20,14 +20,14 @@
 <scroll-view class="setting-list" scroll-y="true">
     <view class="flex padding card-item align-center"
           hover-class='card-item-hover'
-          data-path="/pages/me/mybook"
+          data-path="/pages/me/mycourse"
           bindtap="goto">
         <text class="flex-twice setting-title text-left">我发布的教程(5)</text>
         <text class="text-right flex-sub icon cuIcon-right"></text>
     </view>
     <view class="flex padding card-item align-center"
           hover-class='card-item-hover'
-          data-path="/pages/me/mycourse"
+          data-path="/pages/me/mybook"
           bindtap="goto">
         <text class="flex-twice setting-title text-left">我创建的手册(1)</text>
         <text class="text-right flex-sub icon cuIcon-right"></text>
