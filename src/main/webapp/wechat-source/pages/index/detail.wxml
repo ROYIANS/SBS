@@ -13,10 +13,10 @@
 </view>
 <view class="content">
     <text class="text-control" data-cid="{{content.cid}}" bindtap='goInto'>{{content.content.content}}</text>
-    <view class="post-img grid col-3 flex-sub grid-square">
+    <view class="post-img grid col-3 flex-sub grid-square" wx:if="{{content.imgUrls}}">
         <view class="bg-img" style="background-image:url({{img}});" data-index="{{content.cid}}" data-src="{{img}}" wx:for="{{content['imgUrls']}}" wx:for-item="img" wx:key="index" bindtap="previewImage"></view>
     </view>
-    <!--<video src="{{item}}" wx:for="{{item['vidUrl']}}" wx:key="*this"></video>-->
+    <video src="{{item}}" wx:if="{{content.vidUrl}}"></video>
 </view>
 </view>
 <view class="black-bottom"></view>

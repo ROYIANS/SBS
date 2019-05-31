@@ -82,35 +82,66 @@ Page({
 
     initItem: function() {
         let that = this;
+        let gid = wx.getStorageSync("gid");
         that.setData({
             isLoad: true,
             courses: []
         });
-        wx.request({
-            url: 'http://localhost:8080/api/user/course/'+wx.getStorageSync("uid"),
-            header: {
-                'content-type': 'application/json'
-            },
-            data: {
-                t: new Date()
-            },
-            success: function(res) {
-                let data = res.data.data;
-                console.log(res.data);
-                if(data.courses.length<15){
+        if(gid===1||gid===null){
+            wx.request({
+                url: 'http://localhost:8080/api/user/course/'+wx.getStorageSync("uid"),
+                header: {
+                    'content-type': 'application/json'
+                },
+                data: {
+                    t: new Date()
+                },
+                success: function(res) {
+                    let data = res.data.data;
+
+                    if(data.courses.length<15){
+                        that.setData({
+                            isLoad: false
+                        });
+                    }
                     that.setData({
-                        isLoad: false
+                        courses: data.courses
                     });
+                    console.log(res.data.data.courses)
+                },
+                fail(res) {
+                    console.log(res)
                 }
-                that.setData({
-                    courses: data.courses
-                });
-                console.log(res.data.data.courses)
-            },
-            fail(res) {
-                console.log(res)
-            }
-        });
+            });
+        } else {
+            wx.request({
+                url: 'http://localhost:8080/api/course/list',
+                header: {
+                    'content-type': 'application/json'
+                },
+                data: {
+                    gid: gid,
+                    t: new Date()
+                },
+                success: function(res) {
+                    let data = res.data.data;
+                    console.log(res.data);
+                    if(data.length<15){
+                        that.setData({
+                            isLoad: false
+                        });
+                    }
+                    that.setData({
+                        courses: data
+                    });
+                    console.log(res.data.data)
+                },
+                fail(res) {
+                    console.log(res)
+                }
+            });
+        }
+
     },
     previewImage: function (e) {
         let current=e.target.dataset.src;
@@ -136,34 +167,65 @@ Page({
     },
     loadmore: function() {
         let that = this;
+        let gid = wx.getStorageSync("gid");
         that.setData({
             isLoad: true,
         });
-        wx.request({
-            url: 'http://localhost:8080/api/user/course/'+wx.getStorageSync("uid"),
-            header: {
-                'content-type': 'application/json'
-            },
-            data: {
-                t: new Date()
-            },
-            success: function(res) {
-                let data = res.data.data;
+        if(gid===1||gid===null){
+            wx.request({
+                url: 'http://localhost:8080/api/user/course/'+wx.getStorageSync("uid"),
+                header: {
+                    'content-type': 'application/json'
+                },
+                data: {
+                    t: new Date()
+                },
+                success: function(res) {
+                    let data = res.data.data;
 
-                if(data.courses.length<15){
+                    if(data.courses.length<15){
+                        that.setData({
+                            isLoad: false
+                        });
+                    }
                     that.setData({
-                        isLoad: false
+                        courses: data.courses
                     });
+                    console.log(res.data.data.courses)
+                },
+                fail(res) {
+                    console.log(res)
                 }
-                that.setData({
-                    courses: data.courses
-                });
-                console.log(res.data.data.courses)
-            },
-            fail(res) {
-                console.log(res)
-            }
-        });
+            });
+        } else {
+            wx.request({
+                url: 'http://localhost:8080/api/course/list',
+                header: {
+                    'content-type': 'application/json'
+                },
+                data: {
+                    gid: gid,
+                    t: new Date()
+                },
+                success: function(res) {
+                    let data = res.data.data;
+                    console.log(res.data);
+                    if(data.length<15){
+                        that.setData({
+                            isLoad: false
+                        });
+                    }
+                    that.setData({
+                        courses: data
+                    });
+                    console.log(res.data.data)
+                },
+                fail(res) {
+                    console.log(res)
+                }
+            });
+        }
+
     },
     goInto : function (e) {
         wx.navigateTo({

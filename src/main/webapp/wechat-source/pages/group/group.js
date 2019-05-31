@@ -8,6 +8,8 @@ Page({
      */
     data: {
         isTap: '1',
+        gid : null,
+        data: null
     },
 
     /**
@@ -34,6 +36,30 @@ Page({
                 selected: 3
             })
         }
+        this.setData({
+            gid: wx.getStorageSync("gid")
+        });
+        this.getGroupInfo();
+    },
+
+    getGroupInfo: function() {
+        let that = this;
+        wx.request({
+            url: 'http://localhost:8080/api/group/'+wx.getStorageSync("gid"),
+            header: {
+                'content-type': 'application/json'
+            },
+            success: function(res) {
+                let data = res.data.data;
+                that.setData({
+                    data: data,
+                });
+                console.log(res.data);
+            },
+            fail(res) {
+                console.log(res)
+            }
+        });
     },
 
     /**
