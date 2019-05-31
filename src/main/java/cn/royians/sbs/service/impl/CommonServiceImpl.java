@@ -89,7 +89,7 @@ public class CommonServiceImpl implements CommonService {
         jsonObject.put("userInfo", userInfo);
         jsonObject.put("content", JSON.parse(course.getcContent()));
         jsonObject.put("imgUrls", JSON.parse(course.getcImgUrls()));
-        jsonObject.put("vidUrl", JSON.parse(course.getcVidUrl()));
+        jsonObject.put("vidUrl", course.getcVidUrl());
         jsonObject.put("time", s);
         return jsonObject;
     }
@@ -138,7 +138,7 @@ public class CommonServiceImpl implements CommonService {
             if (!book.getbIsDel()) {
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("bid", book.getbId());
-                jsonObject.put("uiserInfo", this.getUserInfoByUID(book.getbUid()));
+                jsonObject.put("userInfo", this.getUserInfoByUID(book.getbUid()));
                 jsonObject.put("gid", book.getbGid());
                 jsonObject.put("title", book.getbTitle());
                 jsonObject.put("description", book.getbDescription());

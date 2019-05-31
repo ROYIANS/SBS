@@ -15,7 +15,7 @@
             <view class="bg-img" style="background-image:url({{img}});" data-index="{{item.cid}}" data-src="{{img}}" wx:for="{{item['imgUrls']}}" wx:for-item="img" wx:key="index" bindtap="previewImage">
             </view>
           </view>
-          <!--<video src="{{item}}" wx:for="{{item['vidUrl']}}" wx:key="*this"></video>-->
+          <video src="{{item['vidUrl']}}" wx:if="item['vidUrl']"></video>
         </view>
       </view>
     </view>

@@ -108,9 +108,15 @@ Page({
   },
   previewImage: function (e) {
     let current=e.target.dataset.src;
-    let index = e.target.dataset.index;
+    let index = 1;
+    for(let i=0;i<this.data.courses.length;i++) {
+      if(this.data.courses[i].cid==e.target.dataset.index) {
+        index = i;
+      }
+    }
+
     let list = [];
-    let imgUrls = this.data.courses[index-1]['imgUrls'];
+    let imgUrls = this.data.courses[index]['imgUrls'];
     for(let key in imgUrls){
       list.push(imgUrls[key]);
     }
@@ -123,37 +129,35 @@ Page({
     })
   },
   loadmore: function() {
-    let _this = this;
-    _this.setData({
+    let that = this;
+    that.setData({
       isLoad: true,
     });
-    setTimeout(function() {
-      for (let i = 0; i <= 5; i++) {
-        if (_this.data.listData.length > 50) {
-          _this.setData({
-            isLoad: false,
+    wx.request({
+      url: 'http://localhost:8080/api/user/course/'+wx.getStorageSync("uid"),
+      header: {
+        'content-type': 'application/json'
+      },
+      data: {
+        t: new Date()
+      },
+      success: function(res) {
+        let data = res.data.data;
+
+        if(data.courses.length<15){
+          that.setData({
+            isLoad: false
           });
-          break;
         }
-        wx.request({
-          url: 'http://localhost:8080/api/user/course/'+wx.getStorageSync("uid"),
-          //json数据地址
-          data: {
-            t: new Date()
-          },
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          success: function(res) {
-            let listData = _this.data.courses;
-            listData.push(res.data.data.courses);
-            _this.setData({
-              courses: listData
-            })
-          }
-        })
+        that.setData({
+          courses: data.courses
+        });
+        console.log(res.data.data.courses)
+      },
+      fail(res) {
+        console.log(res)
       }
-    }, 1000)
+    });
   },
   goInto : function (e) {
     wx.navigateTo({

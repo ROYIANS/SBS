@@ -9,14 +9,14 @@ Page({
     isTap: 1,
     booklist: [{
       title: 'Spring0 入门1',
-      time: '2019.05.30',
-      author: 'ROYIANS',
+      time: '2019-05-30',
+      author: '皮卡丘兵乒乓乒~',
       timestamp: 1510,
       isShow: true
     },{
       title: 'Apring0 入门2',
       time: '2019.04.30',
-      author: 'ROYIANS',
+      author: '皮卡丘兵乒乓乒~',
       timestamp: 1400,
       isShow: true
     },{

@@ -45,7 +45,6 @@
         </view>
     </view>
 </view>
-<button bindtap="test">dd</button>
 <button class="button" form-type="submit"><text class='icon cuIcon-pick'></text> 发表</button>
 </form>
 

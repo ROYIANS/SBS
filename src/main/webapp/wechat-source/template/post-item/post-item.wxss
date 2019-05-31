@@ -106,7 +106,7 @@
     height: 333rpx;
 }
 
-.grid.grid-square>view {
-    margin-bottom: 0;
-}
+/*.grid.grid-square>view {*/
+    /*margin-bottom: 0;*/
+/*}*/
 

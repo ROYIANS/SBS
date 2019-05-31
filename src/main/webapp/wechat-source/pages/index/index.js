@@ -6,51 +6,21 @@ Page({
      * 页面的初始数据
      */
     data: {
-        imgalist: [
-            'https://image.weilanwl.com/img/square-1.jpg',
-            'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=76488821,1544190324&fm=26&gp=0.jpg',
-            'https://image.weilanwl.com/img/square-1.jpg'
-        ],
+        courses: [],
+        imgList: [],
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        let that = this;
-        if(wx.getStorageSync('uid')){
-            wx.checkSession({
-
-                success: function(res){
-                    that.initItem();
-                    console.log("处于登录态");
-
-                },
-
-                fail: function(res){
-
-                    wx.showToast({
-                        title: '登录过期，需要重新登录',
-                        duration: 2000,
-                        success() {
-                            wx.redirectTo({
-                                url: '/pages/us/login'
-                            });
-                        }
-                    });
-
-
-                }
-
-            });
-        } else {
-            wx.redirectTo({
-                url: '/pages/us/login'
-            });
+        this.initItem();
+        if (typeof this.getTabBar === 'function' &&
+            this.getTabBar()) {
+            this.getTabBar().setData({
+                selected: 1
+            })
         }
-
-
-
     },
 
     /**
@@ -64,13 +34,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        if (typeof this.getTabBar === 'function' &&
-            this.getTabBar()) {
-            this.getTabBar().setData({
-                selected: 1
-            });
-            console.log(this.getTabBar().data.selected);
-        }
+
     },
 
     /**
@@ -94,7 +58,7 @@ Page({
         wx.showNavigationBarLoading(); //在标题栏中显示加载
         let that = this;
         //模拟加载
-        setTimeout(function () {
+        setTimeout(function() {
             that.initItem();
             // complete
             wx.hideNavigationBarLoading(); //完成停止加载
@@ -116,79 +80,94 @@ Page({
 
     },
 
-    initItem: function () {
-        let _this = this;
-        _this.setData({
-            title: "加载中...",
-            isLoad: false,
-            listData: []
+    initItem: function() {
+        let that = this;
+        that.setData({
+            isLoad: true,
+            courses: []
         });
-        for (let i = 0; i <= 5; i++) {
-            wx.request({
-                url: 'https://api.imjad.cn/hitokoto/?encode=json',
-                //json数据地址
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                success: function (res) {
-                    let listData = _this.data.listData;
-                    res.data["avatarUrl"] = "https://img.52z.com/upload/news/image/20181011/20181011092002_29968.jpg";
-                    listData.push(res.data);
-                    _this.setData({
-                        listData: listData
-                    })
+        wx.request({
+            url: 'http://localhost:8080/api/user/course/'+wx.getStorageSync("uid"),
+            header: {
+                'content-type': 'application/json'
+            },
+            data: {
+                t: new Date()
+            },
+            success: function(res) {
+                let data = res.data.data;
+                console.log(res.data);
+                if(data.courses.length<15){
+                    that.setData({
+                        isLoad: false
+                    });
                 }
-            })
-        }
+                that.setData({
+                    courses: data.courses
+                });
+                console.log(res.data.data.courses)
+            },
+            fail(res) {
+                console.log(res)
+            }
+        });
     },
     previewImage: function (e) {
-        let current = e.target.dataset.src;
+        let current=e.target.dataset.src;
+        let index = 1;
+        for(let i=0;i<this.data.courses.length;i++) {
+            if(this.data.courses[i].cid==e.target.dataset.index) {
+                index = i;
+            }
+        }
+
+        let list = [];
+        let imgUrls = this.data.courses[index]['imgUrls'];
+        for(let key in imgUrls){
+            list.push(imgUrls[key]);
+        }
+        this.setData({
+            imgList: list
+        });
         wx.previewImage({
             current: current, // 当前显示图片的http链接
-            urls: this.data.imgalist // 需要预览的图片http链接列表
+            urls: this.data.imgList // 需要预览的图片http链接列表
         })
     },
-    loadmore: function () {
-        let _this = this;
-        _this.setData({
-            title: "加载中...",
-            isLoad: false,
+    loadmore: function() {
+        let that = this;
+        that.setData({
+            isLoad: true,
         });
-        setTimeout(function () {
-            for (let i = 0; i <= 5; i++) {
-                if (_this.data.listData.length > 50) {
-                    _this.setData({
-                        title: "- 我是有底线的 -",
-                        isLoad: true,
+        wx.request({
+            url: 'http://localhost:8080/api/user/course/'+wx.getStorageSync("uid"),
+            header: {
+                'content-type': 'application/json'
+            },
+            data: {
+                t: new Date()
+            },
+            success: function(res) {
+                let data = res.data.data;
+
+                if(data.courses.length<15){
+                    that.setData({
+                        isLoad: false
                     });
-                    break;
                 }
-                wx.request({
-                    url: 'https://api.imjad.cn/hitokoto/?encode=json',
-                    //json数据地址
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    success: function (res) {
-                        let listData = _this.data.listData;
-                        res.data["avatarUrl"] = "https://img.52z.com/upload/news/image/20181011/20181011092002_29968.jpg";
-                        listData.push(res.data);
-                        _this.setData({
-                            listData: listData
-                        })
-                    }
-                })
+                that.setData({
+                    courses: data.courses
+                });
+                console.log(res.data.data.courses)
+            },
+            fail(res) {
+                console.log(res)
             }
-        }, 1000)
+        });
     },
-    gotoLogin: function () {
-        wx.switchTab({
-            url: '/pages/me/me',
-        })
-    },
-    goInto : function () {
+    goInto : function (e) {
         wx.navigateTo({
-            url: '/pages/index/detail?cid=5',
+            url: '/pages/index/detail?cid='+e.target.dataset.cid,
         })
     }
 });

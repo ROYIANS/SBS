@@ -7,7 +7,7 @@ import java.util.*;
 public class DateExample {
     public String stampToDateString(Date s){
         String res;
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd");
         res = simpleDateFormat.format(s);
         return res;
     }

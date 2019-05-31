@@ -82,7 +82,6 @@ Page({
   },
   previewImage: function (e) {
     let current=e.target.dataset.src;
-    let index = e.target.dataset.index;
     let list = [];
     let imgUrls = this.data.content['imgUrls'];
     for(let key in imgUrls){
