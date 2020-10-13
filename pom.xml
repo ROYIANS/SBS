@@ -21,7 +21,7 @@
         <spring-data-jpa.version>2.1.8.RELEASE</spring-data-jpa.version>
         <spring.version>5.2.3.RELEASE</spring.version>
         <spring-security.version>5.1.5.RELEASE</spring-security.version>
-        <junit.version>4.11</junit.version>
+        <junit.version>4.13.1</junit.version>
         <mybatis.version>3.4.6</mybatis.version>
         <mybatis-spring>2.0.1</mybatis-spring>
         <log4j.version>2.11.2</log4j.version>
